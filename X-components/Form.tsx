@@ -23,7 +23,7 @@ const Form = ({
 
     return <form onSubmit={test}>
     {formData.map((key) => {
-        return <div style={{ display : "flex", flexDirection : "column" }}>
+        return <div style={{ display : "flex", flexDirection : "column", color : "black" }}>
         <label>{key.label}</label>
         <input type={key.type}/>
         </div>

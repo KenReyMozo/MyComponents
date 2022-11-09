@@ -1,0 +1,16 @@
+.primary {
+    background : #0984e3;
+}
+.secondary {
+    background : #636e72;
+}
+.success {
+    /* background : #00b894; */
+    background : #055437;
+}
+.warning {
+    background : #fdcb6e;
+}
+.danger {
+    background : #d63031;
+}

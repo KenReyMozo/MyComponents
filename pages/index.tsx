@@ -1,7 +1,8 @@
 import Head from 'next/head'
 import Image from 'next/image'
-import { useState } from 'react'
+import { BaseSyntheticEvent, MouseEvent, useState } from 'react'
 import Switch from '../components/Checkbox/checkbox'
+import Modal from '../components/Modal/Modal'
 import styles from '../styles/Home.module.css'
 import Form, { FormDataType } from '../X-components/Form'
 
@@ -14,7 +15,19 @@ export default function Home() {
     { label : "Julio", type : "text"},
     { label : "Bday", type : "date"},
     { label : "Password", type : "password"},
+    { label : "Re Password", type : "password"},
+    { label : "bruh?", type : "checkbox"},
+    { label : "bruh?", type : "checkbox"},
+    { label : "bruh?", type : "checkbox"},
   ]
+
+  const [modals, setModals] = useState({
+    test1 : false,
+    test2 : false,
+  })
+
+  const ModalOpenHandler = ({target : { name }} : BaseSyntheticEvent) => setModals(prev => ({...prev,[name] : true}))
+	const ModalCloseHandler = ({target : { name }} : BaseSyntheticEvent) => setModals(prev => ({...prev,[name] : false}))
 
   return (
     <div className={styles.container}>
@@ -25,8 +38,13 @@ export default function Home() {
       </Head>
       <Switch setState={setTest} state={test}/>
       <main className={styles.main}>
-
-        <Form formData={newFormData}/>
+        <button name='test1' onClick={ModalOpenHandler}>OPEN</button>
+        <Modal 
+        width='500px'
+        success show={modals.test1} onClose={ModalCloseHandler} name={'test1'}>
+          
+          <Form formData={newFormData}/>
+        </Modal>
 
         <h1 className={styles.title}>
           Welcome to <a href="https://nextjs.org">Next.js!</a>

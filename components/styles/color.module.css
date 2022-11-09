@@ -1,0 +1,16 @@
+.primary {
+    color : #0984e3;
+}
+.secondary {
+    color : #636e72;
+}
+.success {
+    /* color : #00b894; */
+    color : #055437;
+}
+.warning {
+    color : #fdcb6e;
+}
+.danger {
+    color : #d63031;
+}

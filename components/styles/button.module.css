@@ -1,0 +1,41 @@
+.primaryBTN {
+    background : #74b9ff;
+    color : #2d3436;
+}
+.primaryBTN:hover {
+    background : #0984e3;
+    color : #dfe6e9;
+}
+.secondaryBTN {
+    background : black;
+    color : white;
+}
+.secondaryBTN:hover {
+    background : #35383A;
+    color : white;
+}
+.successBTN {
+    background : #055437;
+    color : white;
+}
+.successBTN:hover {
+    background : #00b894;
+    color : white;
+}
+.warningBTN {
+    background : #ffeaa7;
+    color : #fdcb6e;
+}
+.warningBTN:hover {
+    background : #fdcb6e;
+    color : white;
+}
+.dangerBTN {
+    background : #ff7675;
+    color : #636e72;
+    
+}
+.dangerBTN:hover {
+    background : #d63031;
+    color : #dfe6e9;
+}
