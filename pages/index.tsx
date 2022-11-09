@@ -3,10 +3,18 @@ import Image from 'next/image'
 import { useState } from 'react'
 import Switch from '../components/Checkbox/checkbox'
 import styles from '../styles/Home.module.css'
+import Form, { FormDataType } from '../X-components/Form'
 
 export default function Home() {
   
   const [test, setTest] = useState(false)
+
+  const newFormData : FormDataType[] = [
+    { label : "Name", type : "text"},
+    { label : "Julio", type : "text"},
+    { label : "Bday", type : "date"},
+    { label : "Password", type : "password"},
+  ]
 
   return (
     <div className={styles.container}>
@@ -17,6 +25,9 @@ export default function Home() {
       </Head>
       <Switch setState={setTest} state={test}/>
       <main className={styles.main}>
+
+        <Form formData={newFormData}/>
+
         <h1 className={styles.title}>
           Welcome to <a href="https://nextjs.org">Next.js!</a>
         </h1>
