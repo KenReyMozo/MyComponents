@@ -37,6 +37,27 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Switch setState={setTest} state={test}/>
+
+      <div className={styles.context}>
+        <h1>Pure Css Animated Background</h1>
+    </div>
+
+
+  <div className={styles.area} >
+            <ul className={styles.circles}>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+            </ul>
+    </div >
+
       <main className={styles.main}>
         <button name='test1' onClick={ModalOpenHandler}>OPEN</button>
         <Modal 
