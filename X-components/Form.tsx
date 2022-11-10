@@ -1,3 +1,4 @@
+import style from "./form.module.scss";
 import React, { BaseSyntheticEvent } from "react"
 
 export type FormDataType = {
@@ -22,10 +23,10 @@ const Form = ({
     }
 
     return <form onSubmit={test}>
-    {formData.map((key) => {
-        return <div style={{ display : "flex", flexDirection : "column", color : "black" }}>
-        <label>{key.label}</label>
-        <input type={key.type}/>
+    {formData.map((key,i) => {
+        return <div className={style.inputContainer}>
+        <label htmlFor={`${key.label}-${i}`}>{key.label}</label>
+        <input id={`${key.label}-${i}`} type={key.type}/>
         </div>
     })}
     <button type="submit">Submit</button>
