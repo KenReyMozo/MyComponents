@@ -57,9 +57,9 @@
 }
 
 .body {
-    padding : 0.5em;
+    padding : 2em;
     overflow : auto;
-    max-height : 70vh;
+    max-height : 80vh;
 }
 
 .button{
