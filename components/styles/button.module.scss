@@ -1,0 +1,43 @@
+@use 'base';
+
+.primaryBTN {
+    background : base.$primaryColor;
+    color : base.$textColor;
+}
+.primaryBTN:hover {
+    background : base.$primaryColorH;
+    color : base.$textColorH;
+}
+.secondaryBTN {
+    background : base.$secondaryColor;
+    color : base.$textColor;
+}
+.secondaryBTN:hover {
+    background : base.$secondaryColorH;
+    color : base.$textColorH;
+}
+.successBTN {
+    background : base.$successColor;
+    color : base.$textColor;
+}
+.successBTN:hover {
+    background : base.$successColorH;
+    color : base.$textColorH;
+}
+.warningBTN {
+    background : base.$warningColor;
+    color : base.$textColor;
+}
+.warningBTN:hover {
+    background : base.$warningColorH;
+    color : base.$textColorH;
+}
+.dangerBTN {
+    background : base.$dangerColor;
+    color : base.$textColor;
+    
+}
+.dangerBTN:hover {
+    background : base.$dangerColorH;
+    color : base.$textColorH;
+}

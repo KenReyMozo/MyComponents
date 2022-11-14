@@ -1,0 +1,17 @@
+@use 'base';
+
+.primary {
+    color : base.$primaryColor;
+}
+.secondary {
+    color : base.$secondaryColor;
+}
+.success {
+    color : base.$successColor ;
+}
+.warning {
+    color : base.$warningColor;
+}
+.danger {
+    color : base.$dangerColor;
+}

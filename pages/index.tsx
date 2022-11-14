@@ -2,7 +2,7 @@ import Head from 'next/head'
 import Image from 'next/image'
 import { BaseSyntheticEvent, MouseEvent, useState } from 'react'
 import Switch from '../components/Checkbox/checkbox'
-import Modal from '../components/Modal/Modal'
+import Modal, { ModalFooterButton } from '../components/Modal/Modal'
 import styles from '../styles/Home.module.css'
 import Form, { FormDataType } from '../X-components/Form'
 
@@ -41,7 +41,14 @@ export default function Home() {
       <main className={styles.main}>
         <button name='test1' onClick={ModalOpenHandler}>OPEN</button>
         <Modal 
-        width='500px'
+        width='800px'
+        footer={[
+          <ModalFooterButton success text={'TEST'}/>,
+          <ModalFooterButton secondary text={'TEST'}/>,
+          <ModalFooterButton primary text={'TEST'}/>,
+          <ModalFooterButton warning text={'TEST'}/>,
+          <ModalFooterButton danger text={'TEST'}/>,
+        ]}
         success show={modals.test1} onClose={ModalCloseHandler} name={'test1'}>
           
           <Form formData={newFormData}/>
@@ -55,7 +62,6 @@ export default function Home() {
           Get started by editing{' '}
           <code className={styles.code}>pages/index.tsx</code>
         </p>
-
         <div className={styles.grid}>
           <a href="https://nextjs.org/docs" className={styles.card}>
             <h2>Documentation &rarr;</h2>

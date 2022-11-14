@@ -18,8 +18,6 @@ const Form = ({
     const test = (e : BaseSyntheticEvent) => {
         e.preventDefault()
         
-        console.log("E2",e.target[0].value)
-        console.log("E",e.target[2].value)
     }
 
     return <form onSubmit={test}>

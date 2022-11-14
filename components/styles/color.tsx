@@ -1,4 +1,4 @@
-import style from './color.module.css';
+import style from './color.module.scss';
 
 export const GetColor = ({
     primary, 

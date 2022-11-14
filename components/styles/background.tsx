@@ -1,5 +1,4 @@
-import { ColorType } from '../Interface/Pages';
-import style from './background.module.css';
+import style from './background.module.scss';
 
 export const GetColorType = ({
     primary, 
@@ -7,7 +6,7 @@ export const GetColorType = ({
     success,
     warning,
     danger,
-}: ColorType) => {
+} : ColorType) => {
     if(primary)
         return style.primary
     if(secondary)
