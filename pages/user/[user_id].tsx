@@ -27,7 +27,9 @@ const User = ({
 export default User;
 
 export const getServerSideProps : GetServerSideProps = async (ctx) => {
+    
     const mouse = await TestGet()
+
     return {
         props : {
             name : "Ken",
