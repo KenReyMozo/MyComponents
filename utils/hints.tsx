@@ -4,6 +4,7 @@ const LoadingHints = [
     "Single Origin Enhancements are twice as effective as Dual Origin Enhancements...",
     "Badges can be earned by completing special missions or tasks...",
     "Capes are available to your character after running a special mission at level 20...",
+    "Salamat Ably...",
 ]
 
 const GetRandomInt = (max : number) => {
