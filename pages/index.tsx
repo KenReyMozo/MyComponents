@@ -8,6 +8,9 @@ import Form, { FormDataType } from '../X-components/Form'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {faVideo} from '@fortawesome/free-solid-svg-icons'
 import Link from 'next/link'
+import dynamic from 'next/dynamic'
+
+const AblyChatComponent = dynamic(() => import('../components/Ably/AblyChatComponent'), { ssr: false });
 
 export default function Home() {
   
@@ -63,7 +66,7 @@ export default function Home() {
         <h1 className={styles.title}>
           Welcome to <a href="https://nextjs.org">Next.js!</a>
         </h1>
-
+        <AblyChatComponent />
         <p className={styles.description}>
           Get started by editing{' '}
           <code className={styles.code}>pages/index.tsx</code>
