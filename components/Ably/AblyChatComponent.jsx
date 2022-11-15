@@ -11,6 +11,8 @@ const AblyChatComponent = () => {
     const [receivedMessages, setMessages] = useState([]);
     const messageTextIsEmpty = messageText.trim().length === 0;
 
+    const [userName, setUserName] = useState("")
+
     const [channel, ably] = useChannel("chat-demo", (message) => {
         // Here we're computing the state that'll be drawn into the message history
         // We do that by slicing the last 199 messages from the receivedMessages buffer
@@ -31,7 +33,9 @@ const AblyChatComponent = () => {
 
       const handleFormSubmission = (e) => {
         e.preventDefault();
-        sendChatMessage(messageText);
+        const addName = userName ? `${userName} :` : ""
+        const newMessage = `${addName} ${messageText}`
+        sendChatMessage(newMessage);
       }
 
       const handleKeyPress = (e) => {
@@ -49,9 +53,12 @@ const AblyChatComponent = () => {
             </div>;
       });
 
-      useEffect(() => {
-        messageEnd.scrollIntoView({ behaviour: "smooth" });
-      });
+    //   useEffect(() => {
+    //     window.scrollTo({
+	// 		top: messageEnd.offsetTop,
+	// 		behavior: "smooth"
+	// 	})
+    //   });
 
       return (
         <div className={styles.chatHolder}>
@@ -60,6 +67,7 @@ const AblyChatComponent = () => {
             <div ref={(element) => { messageEnd = element; }}></div>
           </div>
           <form onSubmit={handleFormSubmission} className={styles.form}>
+            
             <textarea
               ref={(element) => { inputBox = element; }}
               value={messageText}
@@ -67,7 +75,10 @@ const AblyChatComponent = () => {
               onChange={e => setMessageText(e.target.value)}
               onKeyPress={handleKeyPress}
               className={styles.textarea}
-            ></textarea>
+            ></textarea><br/>
+            Your Name :<br/>
+            <input value={userName} onChange={(e) => {setUserName(e.target.value)}}/>
+            <br/>
             <button type="submit" className={styles.button} disabled={messageTextIsEmpty}>Send</button>
           </form>
         </div>
