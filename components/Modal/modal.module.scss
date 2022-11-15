@@ -1,0 +1,86 @@
+.main {
+    position : fixed;
+    top : 0;
+    bottom : 0;
+    left : 0;
+    right : 0;
+    background-color : rgba(0,0,0,.5);
+    display : flex;
+    z-index : 2;
+}
+
+.modal {
+    margin : auto;
+    background : white;
+    border-radius : 0.3em;
+    overflow: hidden;
+    animation: lds-easeIn .2s cubic-bezier(0, 0.5, 0.5, 1) ;
+}
+
+@keyframes lds-easeIn {
+    0% {
+        transform : scale(.8);
+    }
+    50%, 100% {
+        transform : scale(1);
+    }
+  }
+
+.header {
+    padding : 0.5rem 1rem;
+    display : flex;
+    font-weight: 600;
+    font-size : 1.5rem;
+    border-bottom: 1px solid #2d3436;
+}
+.header button:last-child{
+    margin-left : auto;
+    font-weight : 600;
+    font-size : 1.2rem;
+    background : none;
+    border : none;
+    transition-duration : 200ms;
+}
+.header button:last-child:hover{
+    color : #d63031;
+    transition-duration : 200ms;
+}
+
+.divider {
+    margin : 0;
+}
+
+.footer {
+    display : flex;
+    justify-content : center;
+}
+
+.body {
+    padding : 2em;
+    overflow : auto;
+    max-height : 80vh;
+}
+
+.button{
+    opacity : 0.8;
+    padding : 0.5em 1em;
+    margin : 0.5em 1em;
+    border : none;
+    border-radius : 0.4em;
+    font-weight : 600;
+    transition-duration : 200ms;
+}
+.button:hover{
+    opacity : 1;
+    transition-duration : 200ms;
+}
+
+.footerButton {
+    flex-grow : 1;
+    /* opacity : 0.8; */
+    padding : 0.5em 1em;
+    border : none;
+    font-weight : 600;
+    font-size : 1.2em;
+    transition-duration : 200ms;
+}

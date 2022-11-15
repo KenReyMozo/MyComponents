@@ -1,12 +1,35 @@
 import Head from 'next/head'
 import Image from 'next/image'
-import { useState } from 'react'
+import { BaseSyntheticEvent, MouseEvent, useState } from 'react'
 import Switch from '../components/Checkbox/checkbox'
+import Modal, { ModalFooterButton } from '../components/Modal/Modal'
 import styles from '../styles/Home.module.css'
+import Form, { FormDataType } from '../X-components/Form'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import {faVideo} from '@fortawesome/free-solid-svg-icons'
 
 export default function Home() {
   
   const [test, setTest] = useState(false)
+
+  const newFormData : FormDataType[] = [
+    { label : "Name", type : "text"},
+    { label : "Julio", type : "text"},
+    { label : "Bday", type : "date"},
+    { label : "Password", type : "password"},
+    { label : "Re Password", type : "password"},
+    { label : "bruh?", type : "checkbox"},
+    { label : "bruh?", type : "checkbox"},
+    { label : "bruh?", type : "checkbox"},
+  ]
+
+  const [modals, setModals] = useState({
+    test1 : false,
+    test2 : false,
+  })
+
+  const ModalOpenHandler = ({target : { name }} : BaseSyntheticEvent) => setModals(prev => ({...prev,[name] : true}))
+	const ModalCloseHandler = ({target : { name }} : BaseSyntheticEvent) => setModals(prev => ({...prev,[name] : false}))
 
   return (
     <div className={styles.container}>
@@ -16,7 +39,25 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Switch setState={setTest} state={test}/>
+
       <main className={styles.main}>
+        <button name='test1' onClick={ModalOpenHandler}>OPEN</button>
+        <Modal
+        title="Gladge"
+        width='800px'
+        footer={[
+          <ModalFooterButton key='te1' success text={'TEST'}/>,
+          <ModalFooterButton key='te2' secondary text={'TEST'}/>,
+          <ModalFooterButton key='te3' primary text={'TEST'}/>,
+          <ModalFooterButton key='te4' warning text={'TEST'}/>,
+          <ModalFooterButton key='te5' danger text={'TEST'}/>,
+        ]}
+        show={modals.test1} onClose={ModalCloseHandler} name={'test1'}>
+          <div style={{color : "black"}}>
+            <FontAwesomeIcon icon={faVideo}/>
+          </div>
+          <Form formData={newFormData}/>
+        </Modal>
         <h1 className={styles.title}>
           Welcome to <a href="https://nextjs.org">Next.js!</a>
         </h1>
@@ -25,7 +66,6 @@ export default function Home() {
           Get started by editing{' '}
           <code className={styles.code}>pages/index.tsx</code>
         </p>
-
         <div className={styles.grid}>
           <a href="https://nextjs.org/docs" className={styles.card}>
             <h2>Documentation &rarr;</h2>

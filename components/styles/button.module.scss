@@ -1,0 +1,44 @@
+@use 'base';
+
+@mixin baseButton($bg : #222f3e, $c : #c8d6e5) {
+    color : $c;
+    background: $bg;
+    transition-duration: 200ms;
+}
+
+@mixin animButton($bg : #222f3e, $c : #c8d6e5) {
+    color : $bg;
+    background: $c;
+    transition-duration: 200ms;
+}
+
+.primaryBTN {
+    @include baseButton(base.$primaryColor, base.$textColor);
+}
+.primaryBTN:hover {
+    @include animButton(base.$primaryColorH, base.$textColorH);
+}
+.secondaryBTN {
+    @include baseButton(base.$secondaryColor, base.$textColor);
+}
+.secondaryBTN:hover {
+    @include animButton();
+}
+.successBTN {
+    @include baseButton(base.$successColor, base.$textColor);
+}
+.successBTN:hover {
+    @include animButton(base.$successColorH, base.$textColorH);
+}
+.warningBTN {
+    @include baseButton(base.$warningColor, base.$textColor);
+}
+.warningBTN:hover {
+    @include animButton(base.$warningColorH, base.$textColorH);
+}
+.dangerBTN {
+    @include baseButton(base.$dangerColor, base.$textColor);
+}
+.dangerBTN:hover {
+    @include animButton(base.$dangerColorH, base.$textColorH);
+}
