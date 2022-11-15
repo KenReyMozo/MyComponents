@@ -9,6 +9,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {faVideo} from '@fortawesome/free-solid-svg-icons'
 import Link from 'next/link'
 import dynamic from 'next/dynamic'
+import { Trap } from '../components/Shape/Shape'
 
 const AblyChatComponent = dynamic(() => import('../components/Ably/AblyChatComponent'), { ssr: false });
 
@@ -61,6 +62,7 @@ export default function Home() {
           <div style={{color : "black"}}>
             <FontAwesomeIcon icon={faVideo}/>
           </div>
+          <Trap/>
           <Form formData={newFormData}/>
         </Modal>
         <h1 className={styles.title}>
