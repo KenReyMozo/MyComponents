@@ -7,6 +7,7 @@ import styles from '../styles/Home.module.css'
 import Form, { FormDataType } from '../X-components/Form'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {faVideo} from '@fortawesome/free-solid-svg-icons'
+import Link from 'next/link'
 
 export default function Home() {
   
@@ -42,6 +43,7 @@ export default function Home() {
 
       <main className={styles.main}>
         <button name='test1' onClick={ModalOpenHandler}>OPEN</button>
+        <Link href={'/user/12'}>User : 12</Link>
         <Modal
         title="Gladge"
         width='800px'
