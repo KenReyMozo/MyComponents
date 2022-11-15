@@ -5,6 +5,8 @@ import Switch from '../components/Checkbox/checkbox'
 import Modal, { ModalFooterButton } from '../components/Modal/Modal'
 import styles from '../styles/Home.module.css'
 import Form, { FormDataType } from '../X-components/Form'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import {faVideo} from '@fortawesome/free-solid-svg-icons'
 
 export default function Home() {
   
@@ -50,10 +52,11 @@ export default function Home() {
           <ModalFooterButton danger text={'TEST'}/>,
         ]}
         success show={modals.test1} onClose={ModalCloseHandler} name={'test1'}>
-          
+          <div style={{background : "black"}}>
+            <FontAwesomeIcon icon={faVideo}/>
+          </div>
           <Form formData={newFormData}/>
         </Modal>
-
         <h1 className={styles.title}>
           Welcome to <a href="https://nextjs.org">Next.js!</a>
         </h1>

@@ -1,43 +1,44 @@
 @use 'base';
 
+@mixin baseButton($bg : #222f3e, $c : #c8d6e5) {
+    color : $c;
+    background: $bg;
+    transition-duration: 200ms;
+}
+
+@mixin animButton($bg : #222f3e, $c : #c8d6e5) {
+    color : $bg;
+    background: $c;
+    transition-duration: 200ms;
+}
+
 .primaryBTN {
-    background : base.$primaryColor;
-    color : base.$textColor;
+    @include baseButton(base.$primaryColor, base.$textColor);
 }
 .primaryBTN:hover {
-    background : base.$primaryColorH;
-    color : base.$textColorH;
+    @include animButton(base.$primaryColorH, base.$textColorH);
 }
 .secondaryBTN {
-    background : base.$secondaryColor;
-    color : base.$textColor;
+    @include baseButton(base.$secondaryColor, base.$textColor);
 }
 .secondaryBTN:hover {
-    background : base.$secondaryColorH;
-    color : base.$textColorH;
+    @include animButton();
 }
 .successBTN {
-    background : base.$successColor;
-    color : base.$textColor;
+    @include baseButton(base.$successColor, base.$textColor);
 }
 .successBTN:hover {
-    background : base.$successColorH;
-    color : base.$textColorH;
+    @include animButton(base.$successColorH, base.$textColorH);
 }
 .warningBTN {
-    background : base.$warningColor;
-    color : base.$textColor;
+    @include baseButton(base.$warningColor, base.$textColor);
 }
 .warningBTN:hover {
-    background : base.$warningColorH;
-    color : base.$textColorH;
+    @include animButton(base.$warningColorH, base.$textColorH);
 }
 .dangerBTN {
-    background : base.$dangerColor;
-    color : base.$textColor;
-    
+    @include baseButton(base.$dangerColor, base.$textColor);
 }
 .dangerBTN:hover {
-    background : base.$dangerColorH;
-    color : base.$textColorH;
+    @include animButton(base.$dangerColorH, base.$textColorH);
 }

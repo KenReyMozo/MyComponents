@@ -1,4 +1,10 @@
+import { MouseEventHandler } from 'react';
 import style from './button.module.scss';
+
+type BaseButton = {
+    name? : string,
+    type? : "button" | "submit" | "reset",
+}
 
 export const GetColorTypeButton = ( {
     primary, 
@@ -18,4 +24,27 @@ export const GetColorTypeButton = ( {
     if(danger)
         return style.dangerBTN
     return style.primary
+}
+
+type ButtonType =  {
+    text? : string,
+    icon? : JSX.Element,
+    onClick? : MouseEventHandler,
+} & ColorType & BaseButton
+
+export const Button = ({
+    primary, 
+    secondary,
+    success,
+    warning,
+    danger,
+    text,
+    icon,
+    onClick,
+    type,
+    name,
+} : ButtonType) => {
+    return <button onClick={onClick} type={type} name={name}>
+        {icon}{text}
+    </button>
 }
