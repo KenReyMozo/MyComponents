@@ -1,0 +1,126 @@
+.trapeziod {
+    position: relative;
+    width: 105px;
+    height: 105px;
+}
+
+.trapeziod div {
+    position: absolute;
+}
+
+.trap {
+	animation: bgChange 5s ease infinite;
+}
+
+.kr1 {
+    top: 10px;
+    left: 10px;
+}
+.kr1 div {
+    width: 10px;
+    height: 40px;
+    transform: perspective(0px) rotateY(2deg);
+}
+
+.kr2 {
+    top: 52px;
+    left: 13px;
+    transform: rotate(-135deg)
+}
+.kr2 div{
+    width: 10px;
+    height: 50px;
+    transform: perspective(0px) rotateY(2.5deg);
+}
+
+.kr3 {
+    top: 50px;
+    left: 16px;
+}
+.kr3 div{
+    width: 10px;
+    height: 40px;
+    transform: perspective(0px) rotateY(-3deg);
+}
+
+.kr4 {
+    top: 47px;
+    left: 30px;
+    transform: rotate(45deg)
+}
+.kr4 div{
+    width: 30px;
+    height: 10px;
+	transform: skew(45deg);
+}
+
+.kr5 {
+    top: 23px;
+    left: 44px;
+}
+.kr5 div{
+    width: 45px;
+    height: 10px;
+	transform: skew(-45deg);
+}
+
+.kr6 {
+    top: 45px;
+    left: 58px;
+    transform: rotate(-45deg)
+}
+.kr6 div{
+    width: 27px;
+    height: 10px;
+}
+
+.kr7 {
+    top: 47px;
+    left: 50px;
+}
+.kr7 div{
+    width: 10px;
+    height: 39px;
+	transform: skewY(45deg);
+}
+
+.kr8 {
+    top: 58px;
+    left: 50px;
+    transform: rotate(-45deg)
+}
+.kr8 div{
+    width: 10px;
+    height: 39px;
+    transform: perspective(0px) rotateY(-3deg);
+}
+
+@keyframes bgChange {
+    0% {
+        background:  #23d5ab;
+    }
+    25% {
+        background : #ee7752;
+    }
+    50% {
+        background: #e73c7e;
+    }
+    75% {
+        background: #23a6d5;
+    }
+    100% {
+        background:  #23d5ab;
+    }
+}
+
+@keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
