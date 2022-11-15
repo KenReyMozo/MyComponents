@@ -1,7 +1,11 @@
-import style from "./shape.module.scss"
+import style from "./logo.module.scss"
 
-export const Trap = () => {
-    return <div className={style.trapeziod}>
+export const KRMLogo = () => {
+    return <div className={style.krm_logo}>
+        <div className={style.ring}></div>
+        <div className={style.ring2}></div>
+        <div className={style.ring3}></div>
+        <div className={style.ring4}></div>
         <div className={style.kr1}><div className={style.trap}></div></div>
         <div className={style.kr2}><div className={style.trap}></div></div>
         <div className={style.kr3}><div className={style.trap}></div></div>

@@ -1,36 +1,23 @@
+import { GetServerSideProps, GetStaticProps, InferGetStaticPropsType, NextPage } from "next";
 import { useEffect, useState } from "react";
 import { HashLoader } from "react-spinners";
 import { GetLoadingHints } from "../../utils/hints";
 import style from "./loader.module.scss";
 
 type LoaderType = {
-    hintsOn? : boolean,
-    hintsInterval? : number,
+    icon? : JSX.Element,
 }
 
 const Loader = ({
-    hintsOn,
-    hintsInterval,
+    icon,
 } : LoaderType) => {
-
-    const [hints, setHints] = useState(GetLoadingHints())
-
-    useEffect(()=> {
-        if(hintsOn === undefined || hintsOn === false) return;
-        const interval = setInterval(() => {
-            setHints(GetLoadingHints())
-          }, hintsInterval ?? 4000);
-          return () => clearInterval(interval);
-    },[])
-
+    
     return <div className={style.wrapper}>
         <div className={style.main}>
+        {icon ??
         <HashLoader
         color="#eeeeee"
-        size={80}/>
-        {hintsOn && 
-        <small>{hints}</small>
-        }
+        size={80}/>}
         </div>
     </div>
 }
