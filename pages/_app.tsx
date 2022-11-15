@@ -5,6 +5,8 @@ import '@fortawesome/fontawesome-svg-core/styles.css'
 import Router from 'next/router'
 import { useEffect, useState } from 'react'
 import Loader from '../components/Loader/Loader'
+import { KRMLogo } from '../components/KR/Logo'
+import { GetLoadingHints } from '../utils/hints'
 config.autoAddCss = false
 
 export default function App({ Component, pageProps }: AppProps) {
@@ -27,7 +29,7 @@ export default function App({ Component, pageProps }: AppProps) {
   }, [Router])
 
   return <>
-  {isLoading && <Loader hintsOn={true} hintsInterval={7000}/>}
+  {isLoading && <Loader icon={<KRMLogo/>}/>}
   <Component {...pageProps} />
   </>
 }

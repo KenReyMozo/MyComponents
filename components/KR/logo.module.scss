@@ -1,12 +1,41 @@
-.trapeziod {
+@mixin ring($radius : 0%, $delay : 0ms){
+    position: absolute;
+    left : -23px;
+    top : -22.5px;
+    width: 140px;
+    height: 140px;
+    background: none;
+    border : 1px solid;
+    border-radius:$radius;
+    animation: borderChange 3s ease infinite;
+    animation-delay : $delay;
+}
+
+.krm_logo {
     position: relative;
     width: 105px;
     height: 105px;
 }
 
-.trapeziod div {
+.krm_logo div {
     position: absolute;
 }
+
+.ring {
+    @include ring(50%)
+}
+
+.ring2 {
+    @include ring(0)
+}
+
+.ring3 {
+    @include ring(0,200ms)
+}
+.ring5 {
+    @include ring(0,400ms)
+}
+
 
 .trap {
 	animation: bgChange 5s ease infinite;
@@ -34,8 +63,8 @@
 }
 
 .kr3 {
-    top: 50px;
-    left: 16px;
+    top: 50.5px;
+    left: 15px;
 }
 .kr3 div{
     width: 10px;
@@ -75,7 +104,7 @@
 }
 
 .kr7 {
-    top: 47px;
+    top: 46.5px;
     left: 50px;
 }
 .kr7 div{
@@ -113,14 +142,25 @@
     }
 }
 
-@keyframes gradient {
-	0% {
-		background-position: 0% 50%;
-	}
-	50% {
-		background-position: 100% 50%;
-	}
-	100% {
-		background-position: 0% 50%;
-	}
+@keyframes borderChange {
+    0% {
+        border-color:  #23d5ab;
+        transform: rotate(-135deg)
+    }
+    25% {
+        border-color:  #ee7752;
+        transform: rotate(150deg)
+    }
+    50% {
+        border-color:  #e73c7e;
+        transform: rotate(25deg)
+    }
+    75% {
+        border-color:  #23a6d5;
+        transform: rotate(-45deg)
+    }
+    100% {
+        border-color:  23d5ab;
+        transform: rotate(-135deg)
+    }
 }

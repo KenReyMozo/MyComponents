@@ -11,13 +11,16 @@ const AblyChatComponent = () => {
     const [receivedMessages, setMessages] = useState([]);
     const messageTextIsEmpty = messageText.trim().length === 0;
 
+    const [userName, setUserName] = useState("")
+
     const [channel, ably] = useChannel("chat-demo", (message) => {
         // Here we're computing the state that'll be drawn into the message history
         // We do that by slicing the last 199 messages from the receivedMessages buffer
-    
+      
+        console.log("hhmm")
         const history = receivedMessages.slice(-199);
         setMessages([...history, message]);
-    
+        messageEnd.scrollTop = messageEnd.scrollHeight;
         // Then finally, we take the message history, and combine it with the new message
         // This means we'll always have up to 199 message + 1 new message, stored using the
         // setMessages react useState hook
@@ -31,14 +34,18 @@ const AblyChatComponent = () => {
 
       const handleFormSubmission = (e) => {
         e.preventDefault();
-        sendChatMessage(messageText);
+        const addName = userName ? `${userName} :` : ""
+        const newMessage = `${addName} ${messageText}`
+        sendChatMessage(newMessage);
       }
 
       const handleKeyPress = (e) => {
         if (e.charCode !== 13 || messageTextIsEmpty) {
           return;
         }
-        sendChatMessage(messageText);
+        const addName = userName ? `${userName} :` : ""
+        const newMessage = `${addName} ${messageText}`
+        sendChatMessage(newMessage);
         e.preventDefault();
       }
 
@@ -49,17 +56,21 @@ const AblyChatComponent = () => {
             </div>;
       });
 
-      useEffect(() => {
-        messageEnd.scrollIntoView({ behaviour: "smooth" });
-      });
+    //   useEffect(() => {
+    //     window.scrollTo({
+	// 		top: messageEnd.offsetTop,
+	// 		behavior: "smooth"
+	// 	})
+    //   });
 
       return (
         <div className={styles.chatHolder}>
-          <div className={styles.chatText}>
+          <div ref={(element) => { messageEnd = element; }}
+          className={styles.chatText}>
             {messages}
-            <div ref={(element) => { messageEnd = element; }}></div>
           </div>
           <form onSubmit={handleFormSubmission} className={styles.form}>
+            
             <textarea
               ref={(element) => { inputBox = element; }}
               value={messageText}
@@ -67,7 +78,10 @@ const AblyChatComponent = () => {
               onChange={e => setMessageText(e.target.value)}
               onKeyPress={handleKeyPress}
               className={styles.textarea}
-            ></textarea>
+            ></textarea><br/>
+            Your Name :<br/>
+            <input value={userName} onChange={(e) => {setUserName(e.target.value)}}/>
+            <br/>
             <button type="submit" className={styles.button} disabled={messageTextIsEmpty}>Send</button>
           </form>
         </div>

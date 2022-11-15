@@ -9,7 +9,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {faVideo} from '@fortawesome/free-solid-svg-icons'
 import Link from 'next/link'
 import dynamic from 'next/dynamic'
-import { Trap } from '../components/Shape/Shape'
+import { KRMLogo } from '../components/KR/Logo'
 
 const AblyChatComponent = dynamic(() => import('../components/Ably/AblyChatComponent'), { ssr: false });
 
@@ -68,7 +68,7 @@ export default function Home() {
           Welcome to <a href="https://nextjs.org">Next.js!</a>
         </h1>
         <AblyChatComponent />
-        <Trap/>
+        <KRMLogo/>
         <p className={styles.description}>
           Get started by editing{' '}
           <code className={styles.code}>pages/index.tsx</code>
