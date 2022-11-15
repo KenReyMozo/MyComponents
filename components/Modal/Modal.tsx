@@ -16,6 +16,7 @@ type ModalType = {
 } & ColorType
 
 type ModalButtonType = {
+    key : string,
     onClick? : MouseEventHandler,
     text : string,
     name? : string,
@@ -50,7 +51,7 @@ export const ModalButton = ( {
         name={name ? name : ""}
         form={form ? form : ""}
         type={form ? "submit" : "button"}
-        onClick={onClick ? (e)=>{onClick(e)} : ()=>{}}>
+        onClick={onClick}>
         {text}
     </button>
 }
@@ -73,7 +74,7 @@ export const ModalFooterButton = ( {
         name={name ?? ''}
         form={form ? form : ""}
         type={form ? "submit" : "button"}
-        onClick={onClick ? (e)=>{onClick(e)} : ()=>{}}
+        onClick={onClick}
         style={{border : border, borderRadius : borderRadius, padding : padding}}>
         {text}
     </button>

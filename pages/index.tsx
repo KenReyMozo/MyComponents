@@ -46,11 +46,11 @@ export default function Home() {
         title="Gladge"
         width='800px'
         footer={[
-          <ModalFooterButton success text={'TEST'}/>,
-          <ModalFooterButton secondary text={'TEST'}/>,
-          <ModalFooterButton primary text={'TEST'}/>,
-          <ModalFooterButton warning text={'TEST'}/>,
-          <ModalFooterButton danger text={'TEST'}/>,
+          <ModalFooterButton key='te1' success text={'TEST'}/>,
+          <ModalFooterButton key='te2' secondary text={'TEST'}/>,
+          <ModalFooterButton key='te3' primary text={'TEST'}/>,
+          <ModalFooterButton key='te4' warning text={'TEST'}/>,
+          <ModalFooterButton key='te5' danger text={'TEST'}/>,
         ]}
         show={modals.test1} onClose={ModalCloseHandler} name={'test1'}>
           <div style={{color : "black"}}>
