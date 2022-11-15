@@ -2,16 +2,47 @@
 
 .primary {
     background : base.$primaryColor;
+    color : base.$textColor;
 }
+.primary * {
+    color : base.$textColor;
+}
+
 .secondary {
     background : base.$secondaryColor;
+    color : base.$textColor;
 }
-.success {
+.secondary * {
+    color : base.$textColor;
+}
+
+.success{
     background : base.$successColor ;
+    color : base.$textColorH;
 }
+.success * {
+    color : base.$textColorH;
+}
+
 .warning {
     background : base.$warningColor;
+    color : base.$textColorH;
 }
+.warning * {
+    color : base.$textColorH;
+}
+
 .danger {
     background : base.$dangerColor;
+    color : base.$textColor;
+}
+.danger * {
+    color : base.$textColor;
+}
+
+.base {
+    color : base.$textColorH;
+}
+.base * {
+    color : base.$textColorH;
 }

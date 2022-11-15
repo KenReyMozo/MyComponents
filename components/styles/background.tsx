@@ -17,5 +17,5 @@ export const GetColorType = ({
         return style.warning
     if(danger)
         return style.danger
-    return ''
+    return style.base
 }

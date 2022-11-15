@@ -1,7 +1,7 @@
 import { MouseEventHandler, ReactNode } from 'react';
 import { GetColorType } from '../styles/background';
 import { GetColorTypeButton } from '../styles/button';
-import style from './modal.module.css';
+import style from './modal.module.scss';
 
 type ModalType = {
     show : boolean,

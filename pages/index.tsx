@@ -42,7 +42,8 @@ export default function Home() {
 
       <main className={styles.main}>
         <button name='test1' onClick={ModalOpenHandler}>OPEN</button>
-        <Modal 
+        <Modal
+        title="Gladge"
         width='800px'
         footer={[
           <ModalFooterButton success text={'TEST'}/>,
@@ -51,8 +52,8 @@ export default function Home() {
           <ModalFooterButton warning text={'TEST'}/>,
           <ModalFooterButton danger text={'TEST'}/>,
         ]}
-        success show={modals.test1} onClose={ModalCloseHandler} name={'test1'}>
-          <div style={{background : "black"}}>
+        show={modals.test1} onClose={ModalCloseHandler} name={'test1'}>
+          <div style={{color : "black"}}>
             <FontAwesomeIcon icon={faVideo}/>
           </div>
           <Form formData={newFormData}/>
