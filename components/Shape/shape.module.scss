@@ -1,6 +1,7 @@
 .trapeziod {
     position: relative;
-    padding: 4em;
+    width: 105px;
+    height: 105px;
 }
 
 .trapeziod div {
@@ -8,7 +9,7 @@
 }
 
 .trap {
-    background: rgb(0, 0, 0);
+	animation: bgChange 5s ease infinite;
 }
 
 .kr1 {
@@ -92,4 +93,34 @@
     width: 10px;
     height: 39px;
     transform: perspective(0px) rotateY(-3deg);
+}
+
+@keyframes bgChange {
+    0% {
+        background:  #23d5ab;
+    }
+    25% {
+        background : #ee7752;
+    }
+    50% {
+        background: #e73c7e;
+    }
+    75% {
+        background: #23a6d5;
+    }
+    100% {
+        background:  #23d5ab;
+    }
+}
+
+@keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
 }

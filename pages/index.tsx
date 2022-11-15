@@ -68,10 +68,7 @@ export default function Home() {
           Welcome to <a href="https://nextjs.org">Next.js!</a>
         </h1>
         <AblyChatComponent />
-        <div style={{position: "absolute", background : "#e84393", border : "20px solid #fff"}}>
-          
         <Trap/>
-        </div>
         <p className={styles.description}>
           Get started by editing{' '}
           <code className={styles.code}>pages/index.tsx</code>
