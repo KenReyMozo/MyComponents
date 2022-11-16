@@ -1,33 +1,103 @@
 import style from "./form.module.scss";
-import React, { BaseSyntheticEvent } from "react"
+import React, { BaseSyntheticEvent, ReactNode } from "react"
+import { GetColorTypeButton } from "../components/styles/button";
 
-export type FormDataType = {
-    label : string,
-    type  : "select" | "date" | "checkbox" | "number" | "password" | "text",
+type BaseInputType = {
+    name : string,
+    onChange : React.ChangeEventHandler,
+    value : string | number,
+}
+
+type FormInputType = {
     placeHolder? : string,
+    type? : string
+} & BaseInputType & ElementType
+
+export const FormInput = ( {
+    type,
+    name,
+    value,
+    onChange,
+    placeHolder,
+    p, m,
+} : FormInputType) => {
+    return <div className={style.inputContainer}>
+        <input
+            style={{ margin : m, padding : p }}
+            className={style.input}
+            type={type ?? "text"}
+            value={value}
+            name={name}
+            placeholder={placeHolder}
+            onChange={onChange}/>
+        </div>
 }
 
-type FormType= {
-    formData :  FormDataType[],
+export const FormTextArea = ( {
+    name,
+    value,
+    onChange,
+    placeHolder,
+    p, m,
+} : FormInputType) => {
+    return <div className={style.inputContainer}>
+        <textarea
+            style={{ margin : m, padding : p }}
+            className={style.input}
+            value={value}
+            name={name}
+            placeholder={placeHolder}
+            onChange={onChange}/>
+        </div>
 }
+
+type FormButtonType = {
+    onClick? : React.MouseEventHandler,
+    name? : string,
+    content? : ReactNode,
+    type? : "button" | "submit" | "reset" ,
+} & ColorType & ElementType
+
+export const FormButton = ({
+    onClick,
+    name,
+    content,
+    type,
+    primary,
+    secondary,
+    success,
+    warning,
+    danger,
+    p, m,
+} : FormButtonType) => {
+    return <button
+            style={{ margin : m, padding : p }}
+            className={`${style.button} ${GetColorTypeButton({primary, secondary, success, warning, danger})}`}
+            type={type ?? "button"}
+            name={name}
+            onClick={onClick}>
+        {content}
+    </button>
+}
+
+type FormType = {
+    children? : ReactNode,
+    onSubmit? : React.FormEventHandler,
+} & ElementType & ElementType
 
 const Form = ({
-    formData
+    children,
+    onSubmit,
+    id,
+    p, m,
 } : FormType) => {
 
-    const test = (e : BaseSyntheticEvent) => {
-        e.preventDefault()
-        
-    }
-
-    return <form onSubmit={test}>
-    {formData.map((key,i) => {
-        return <div className={style.inputContainer}>
-        <label htmlFor={`${key.label}-${i}`}>{key.label}</label>
-        <input id={`${key.label}-${i}`} type={key.type}/>
-        </div>
-    })}
-    <button type="submit">Submit</button>
+    return <form id={id}
+                style={{ margin : m, padding : p }}
+                className={style.form}
+                onSubmit={onSubmit}>
+        {children}
+        <input type={"submit"} style={{display : "none"}}></input>
     </form>
 }
 
