@@ -5,7 +5,7 @@ import style from './modal.module.scss';
 
 type ModalType = {
     show : boolean,
-    onClose : MouseEventHandler,
+    onClose? : MouseEventHandler,
     name : string,
     title? : ReactNode,
     children? : ReactNode,
@@ -107,8 +107,8 @@ const Modal = ( {
                 {header && header.map((item) => {
                     return item;
                 })}
-                    <button className={style.close} name={name}
-                    onClick={(e)=>onClose(e)}>X</button>
+                    {onClose && <button className={style.close} name={name}
+                    onClick={onClose}>X</button>}
                 </div>
                 <div className={style.body}>
                 {children}

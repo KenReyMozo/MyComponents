@@ -1,32 +1,22 @@
 import Head from 'next/head'
 import Image from 'next/image'
-import { BaseSyntheticEvent, MouseEvent, useState } from 'react'
+import React, { BaseSyntheticEvent, ChangeEvent, ChangeEventHandler, MouseEvent, useState } from 'react'
 import Switch from '../components/Checkbox/checkbox'
 import Modal, { ModalFooterButton } from '../components/Modal/Modal'
 import styles from '../styles/Home.module.css'
-import Form, { FormDataType } from '../X-components/Form'
+import Form, { FormInput } from '../X-components/Form'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {faVideo} from '@fortawesome/free-solid-svg-icons'
 import Link from 'next/link'
 import dynamic from 'next/dynamic'
 import { KRMLogo } from '../components/KR/Logo'
+import { DataHandler } from '../utils/DataHandler'
 
 const AblyChatComponent = dynamic(() => import('../components/Ably/AblyChatComponent'), { ssr: false });
 
 export default function Home() {
   
   const [test, setTest] = useState(false)
-
-  const newFormData : FormDataType[] = [
-    { label : "Name", type : "text"},
-    { label : "Julio", type : "text"},
-    { label : "Bday", type : "date"},
-    { label : "Password", type : "password"},
-    { label : "Re Password", type : "password"},
-    { label : "bruh?", type : "checkbox"},
-    { label : "bruh?", type : "checkbox"},
-    { label : "bruh?", type : "checkbox"},
-  ]
 
   const [modals, setModals] = useState({
     test1 : false,
@@ -35,6 +25,27 @@ export default function Home() {
 
   const ModalOpenHandler = ({target : { name }} : BaseSyntheticEvent) => setModals(prev => ({...prev,[name] : true}))
 	const ModalCloseHandler = ({target : { name }} : BaseSyntheticEvent) => setModals(prev => ({...prev,[name] : false}))
+
+  const TestSubmit = (e : React.FormEvent) => {
+    e.preventDefault();
+    console.log("RESR",loginData)
+  }
+
+  type LoginDataType = {
+    email : string,
+    password : string,
+    asd : string,
+    good : boolean,
+  }
+
+  const LoginDataHandler = (e : React.ChangeEvent<Element>) => { DataHandler<LoginDataType>(e,setLoginData) }
+
+  const [loginData, setLoginData] = useState<LoginDataType>({
+    email : "",
+    password : "",
+    asd : "",
+    good : false,
+  })
 
   return (
     <div className={styles.container}>
@@ -46,64 +57,20 @@ export default function Home() {
       <Switch setState={setTest} state={test}/>
 
       <main className={styles.main}>
-        <button name='test1' onClick={ModalOpenHandler}>OPEN</button>
-        <Link href={'/user/12'}>User : 12</Link>
-        <Modal
-        title="Gladge"
-        width='800px'
-        footer={[
-          <ModalFooterButton key='te1' success text={'TEST'}/>,
-          <ModalFooterButton key='te2' secondary text={'TEST'}/>,
-          <ModalFooterButton key='te3' primary text={'TEST'}/>,
-          <ModalFooterButton key='te4' warning text={'TEST'}/>,
-          <ModalFooterButton key='te5' danger text={'TEST'}/>,
-        ]}
-        show={modals.test1} onClose={ModalCloseHandler} name={'test1'}>
-          <div style={{color : "black"}}>
-            <FontAwesomeIcon icon={faVideo}/>
-          </div>
-          <Form formData={newFormData}/>
+        <Modal show={true} name={''} background={"#2d3436"}>
+          
+          <KRMLogo/>
+          <Form onSubmit={TestSubmit}>
+              <FormInput name={'email'} onChange={LoginDataHandler} value={loginData.email}/>
+              <select onChange={LoginDataHandler}>
+                <option value={1}>1</option>
+                <option value={2}>2</option>
+                <option value={3}>3</option>
+              </select>
+              <textarea name='asd' onChange={LoginDataHandler} value={loginData.asd}></textarea>
+              <input type="checkbox" name='good' onChange={LoginDataHandler}></input>
+          </Form>
         </Modal>
-        <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
-        </h1>
-        <AblyChatComponent />
-        <KRMLogo/>
-        <p className={styles.description}>
-          Get started by editing{' '}
-          <code className={styles.code}>pages/index.tsx</code>
-        </p>
-        <div className={styles.grid}>
-          <a href="https://nextjs.org/docs" className={styles.card}>
-            <h2>Documentation &rarr;</h2>
-            <p>Find in-depth information about Next.js features and API.</p>
-          </a>
-
-          <a href="https://nextjs.org/learn" className={styles.card}>
-            <h2>Learn &rarr;</h2>
-            <p>Learn about Next.js in an interactive course with quizzes!</p>
-          </a>
-
-          <a
-            href="https://github.com/vercel/next.js/tree/canary/examples"
-            className={styles.card}
-          >
-            <h2>Examples &rarr;</h2>
-            <p>Discover and deploy boilerplate example Next.js projects.</p>
-          </a>
-
-          <a
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-            className={styles.card}
-          >
-            <h2>Deploy &rarr;</h2>
-            <p>
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
-          </a>
-        </div>
       </main>
 
       <footer className={styles.footer}>

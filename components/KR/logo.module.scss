@@ -13,12 +13,19 @@
 
 .krm_logo {
     position: relative;
-    width: 105px;
-    height: 105px;
+    width: 140px;
+    height: 140px;
+    margin: 40px;
 }
 
 .krm_logo div {
     position: absolute;
+}
+
+.main {
+    position: relative;
+    top : 23px;
+    left: 23px;
 }
 
 .ring {

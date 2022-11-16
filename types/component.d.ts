@@ -1,4 +1,8 @@
 
+type ElementType = {
+    id? : string,
+}
+
 type SwitchType = {
     state : boolean;
     setState : React.Dispatch<React.SetStateAction<boolean>>;

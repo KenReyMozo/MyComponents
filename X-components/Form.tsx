@@ -1,33 +1,42 @@
 import style from "./form.module.scss";
-import React, { BaseSyntheticEvent } from "react"
+import React, { BaseSyntheticEvent, ReactNode } from "react"
 
-export type FormDataType = {
-    label : string,
-    type  : "select" | "date" | "checkbox" | "number" | "password" | "text",
-    placeHolder? : string,
+type BaseInputType = {
+    type? : string
+    name : string,
+    onChange : React.ChangeEventHandler,
+    value : string | number,
 }
 
-type FormType= {
-    formData :  FormDataType[],
+type FormInputType = {
+} & BaseInputType
+
+export const FormInput = ( {
+    type,
+    name,
+    value,
+    onChange,
+} : FormInputType) => {
+    return <input
+        type={type}
+        value={value}
+        name={name}
+        onChange={onChange}/>
 }
+
+type FormType = {
+    children? : ReactNode,
+    onSubmit? : React.FormEventHandler,
+} & ElementType
 
 const Form = ({
-    formData
+    children,
+    onSubmit,
+    id,
 } : FormType) => {
 
-    const test = (e : BaseSyntheticEvent) => {
-        e.preventDefault()
-        
-    }
-
-    return <form onSubmit={test}>
-    {formData.map((key,i) => {
-        return <div className={style.inputContainer}>
-        <label htmlFor={`${key.label}-${i}`}>{key.label}</label>
-        <input id={`${key.label}-${i}`} type={key.type}/>
-        </div>
-    })}
-    <button type="submit">Submit</button>
+    return <form id={id} onSubmit={onSubmit}>
+        {children}
     </form>
 }
 
