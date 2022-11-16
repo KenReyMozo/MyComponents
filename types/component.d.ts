@@ -1,6 +1,8 @@
 
 type ElementType = {
     id? : string,
+    m? : string,
+    p? : string,
 }
 
 type SwitchType = {

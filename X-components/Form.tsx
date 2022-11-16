@@ -1,42 +1,103 @@
 import style from "./form.module.scss";
 import React, { BaseSyntheticEvent, ReactNode } from "react"
+import { GetColorTypeButton } from "../components/styles/button";
 
 type BaseInputType = {
-    type? : string
     name : string,
     onChange : React.ChangeEventHandler,
     value : string | number,
 }
 
 type FormInputType = {
-} & BaseInputType
+    placeHolder? : string,
+    type? : string
+} & BaseInputType & ElementType
 
 export const FormInput = ( {
     type,
     name,
     value,
     onChange,
+    placeHolder,
+    p, m,
 } : FormInputType) => {
-    return <input
-        type={type}
-        value={value}
-        name={name}
-        onChange={onChange}/>
+    return <div className={style.inputContainer}>
+        <input
+            style={{ margin : m, padding : p }}
+            className={style.input}
+            type={type ?? "text"}
+            value={value}
+            name={name}
+            placeholder={placeHolder}
+            onChange={onChange}/>
+        </div>
+}
+
+export const FormTextArea = ( {
+    name,
+    value,
+    onChange,
+    placeHolder,
+    p, m,
+} : FormInputType) => {
+    return <div className={style.inputContainer}>
+        <textarea
+            style={{ margin : m, padding : p }}
+            className={style.input}
+            value={value}
+            name={name}
+            placeholder={placeHolder}
+            onChange={onChange}/>
+        </div>
+}
+
+type FormButtonType = {
+    onClick? : React.MouseEventHandler,
+    name? : string,
+    content? : ReactNode,
+    type? : "button" | "submit" | "reset" ,
+} & ColorType & ElementType
+
+export const FormButton = ({
+    onClick,
+    name,
+    content,
+    type,
+    primary,
+    secondary,
+    success,
+    warning,
+    danger,
+    p, m,
+} : FormButtonType) => {
+    return <button
+            style={{ margin : m, padding : p }}
+            className={`${style.button} ${GetColorTypeButton({primary, secondary, success, warning, danger})}`}
+            type={type ?? "button"}
+            name={name}
+            onClick={onClick}>
+        {content}
+    </button>
 }
 
 type FormType = {
     children? : ReactNode,
     onSubmit? : React.FormEventHandler,
-} & ElementType
+} & ElementType & ElementType
 
 const Form = ({
     children,
     onSubmit,
     id,
+    p, m,
 } : FormType) => {
 
-    return <form id={id} onSubmit={onSubmit}>
+    return <form id={id}
+                style={{ margin : m, padding : p }}
+                className={style.form}
+                onSubmit={onSubmit}>
         {children}
+        <input type={"submit"} style={{display : "none"}}></input>
     </form>
 }
 
