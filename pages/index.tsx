@@ -11,12 +11,15 @@ import Link from 'next/link'
 import dynamic from 'next/dynamic'
 import { KRMLogo } from '../components/KR/Logo'
 import { DataHandler } from '../utils/DataHandler'
-import Flex from '../components/Flex/Flex'
+import { getSession, signIn, useSession } from "next-auth/react";
+import { GetServerSideProps, NextPage } from 'next'
 
 const AblyChatComponent = dynamic(() => import('../components/Ably/AblyChatComponent'), { ssr: false });
 
-export default function Home() {
+const Home : NextPage = () => {
 	
+	const session = useSession();
+
 	const [test, setTest] = useState(false)
 
 	const [modals, setModals] = useState({
@@ -29,8 +32,18 @@ export default function Home() {
 
 	const TestSubmit = (e : React.FormEvent) => {
 		e.preventDefault();
-		console.log("RESR",loginData)
+		console.log("RESR",session)
 	}
+
+	const HandleLoginSubmit = async (e : React.FormEvent) => {
+		e.preventDefault()
+		const res = await signIn('credentials',{
+				username : loginData.email,
+				password : loginData.password,
+				redirect : false
+		})
+		console.log("RES",res)
+}
 
 	type LoginDataType = {
 		email : string,
@@ -57,16 +70,18 @@ export default function Home() {
 				<Modal
 				header={[<KRMLogo key={"krm_login_logo"}/>]}
 				show={true} name={''} background={"#2d3436"}>
-					<Form onSubmit={TestSubmit}>
-							<FormInput name={'email'} placeHolder={"sample@email.com"}
-							onChange={LoginDataHandler}
-							value={loginData.email}/><br/>
-							<FormInput name={'password'}
+					<Form onSubmit={HandleLoginSubmit}>
+							<FormInput name={'email'} m='0 0 1em 0'
+								placeHolder={"sample@email.com"}
+								onChange={LoginDataHandler}
+								value={loginData.email}/>
+							<FormInput name={'password'} m='0 0 1em 0'
 								type={"password"}
 								placeHolder={"password"}
 								onChange={LoginDataHandler}
-								value={loginData.password}/><br/>
+								value={loginData.password}/>
 							<FormButton m='0 .1em' primary content={"Login"} type={"submit"}/>
+							<FormButton m='0 .1em' primary content={"TEST"} onClick={TestSubmit}/>
 					</Form>
 				</Modal>
 			</main>
@@ -86,3 +101,5 @@ export default function Home() {
 		</div>
 	)
 }
+
+export default Home;
