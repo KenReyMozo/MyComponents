@@ -37,7 +37,7 @@ export default function Home() {
 	const HandleLoginSubmit = async (e : React.FormEvent) => {
 		e.preventDefault()
 		const res = await signIn('credentials',{
-				identifier : loginData.email,
+				username : loginData.email,
 				password : loginData.password,
 				redirect : false
 		})
