@@ -12,6 +12,7 @@ import dynamic from 'next/dynamic'
 import { KRMLogo } from '../components/KR/Logo'
 import { DataHandler } from '../utils/DataHandler'
 import Flex from '../components/Flex/Flex'
+import TCompiler from './test/TCompiler'
 
 const AblyChatComponent = dynamic(() => import('../components/Ably/AblyChatComponent'), { ssr: false });
 
@@ -54,7 +55,8 @@ export default function Home() {
 			<Switch setState={setTest} state={test}/>
 
 			<main className={styles.main}>
-				<Modal
+				<TCompiler/>
+				{/* <Modal
 				header={[<KRMLogo key={"krm_login_logo"}/>]}
 				show={true} name={''} background={"#2d3436"}>
 					<Form onSubmit={TestSubmit}>
@@ -68,7 +70,7 @@ export default function Home() {
 								value={loginData.password}/><br/>
 							<FormButton m='0 .1em' primary content={"Login"} type={"submit"}/>
 					</Form>
-				</Modal>
+				</Modal> */}
 			</main>
 
 			<footer className={styles.footer}>
