@@ -11,12 +11,14 @@ import Link from 'next/link'
 import dynamic from 'next/dynamic'
 import { KRMLogo } from '../components/KR/Logo'
 import { DataHandler } from '../utils/DataHandler'
-import Flex from '../components/Flex/Flex'
+import { signIn, useSession } from "next-auth/react";
 
 const AblyChatComponent = dynamic(() => import('../components/Ably/AblyChatComponent'), { ssr: false });
 
 export default function Home() {
 	
+	const session = useSession();
+
 	const [test, setTest] = useState(false)
 
 	const [modals, setModals] = useState({
@@ -29,8 +31,18 @@ export default function Home() {
 
 	const TestSubmit = (e : React.FormEvent) => {
 		e.preventDefault();
-		console.log("RESR",loginData)
+		console.log("RESR",session)
 	}
+
+	const HandleLoginSubmit = async (e : React.FormEvent) => {
+		e.preventDefault()
+		const res = await signIn('credentials',{
+				identifier : loginData.email,
+				password : loginData.password,
+				redirect : false
+		})
+		console.log("RES",res)
+}
 
 	type LoginDataType = {
 		email : string,
@@ -57,7 +69,7 @@ export default function Home() {
 				<Modal
 				header={[<KRMLogo key={"krm_login_logo"}/>]}
 				show={true} name={''} background={"#2d3436"}>
-					<Form onSubmit={TestSubmit}>
+					<Form onSubmit={HandleLoginSubmit}>
 							<FormInput name={'email'} m='0 0 1em 0'
 								placeHolder={"sample@email.com"}
 								onChange={LoginDataHandler}
@@ -68,6 +80,7 @@ export default function Home() {
 								onChange={LoginDataHandler}
 								value={loginData.password}/>
 							<FormButton m='0 .1em' primary content={"Login"} type={"submit"}/>
+							<FormButton m='0 .1em' primary content={"TEST"} onClick={TestSubmit}/>
 					</Form>
 				</Modal>
 			</main>
