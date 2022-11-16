@@ -11,11 +11,12 @@ import Link from 'next/link'
 import dynamic from 'next/dynamic'
 import { KRMLogo } from '../components/KR/Logo'
 import { DataHandler } from '../utils/DataHandler'
-import { signIn, useSession } from "next-auth/react";
+import { getSession, signIn, useSession } from "next-auth/react";
+import { GetServerSideProps, NextPage } from 'next'
 
 const AblyChatComponent = dynamic(() => import('../components/Ably/AblyChatComponent'), { ssr: false });
 
-export default function Home() {
+const Home : NextPage = () => {
 	
 	const session = useSession();
 
@@ -100,3 +101,5 @@ export default function Home() {
 		</div>
 	)
 }
+
+export default Home;
