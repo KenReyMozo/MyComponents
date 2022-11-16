@@ -55,7 +55,7 @@ export default function Home() {
 
 			<main className={styles.main}>
 				<Modal
-				header={[<KRMLogo/>]}
+				header={[<KRMLogo key={"krm_login_logo"}/>]}
 				show={true} name={''} background={"#2d3436"}>
 					<Form onSubmit={TestSubmit}>
 							<FormInput name={'email'} placeHolder={"sample@email.com"}
