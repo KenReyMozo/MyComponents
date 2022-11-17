@@ -6,10 +6,18 @@ import Router from 'next/router'
 import { useEffect, useState } from 'react'
 import Loader from '../components/Loader/Loader'
 import { KRMLogo } from '../components/KR/Logo'
-import { GetLoadingHints } from '../utils/hints'
+import { Session } from 'next-auth'
+import { SessionProvider } from 'next-auth/react'
 config.autoAddCss = false
 
-export default function App({ Component, pageProps }: AppProps) {
+interface CustomProps extends AppProps {
+  session : Session
+}
+
+export default function App({
+  Component,
+  pageProps,
+  session }: CustomProps) {
 
   const [isLoading, setIsLoading] = useState(false);
 
@@ -27,10 +35,14 @@ export default function App({ Component, pageProps }: AppProps) {
     });
 
   }, [Router])
+  
+  const newProps = {session, ...pageProps}
 
   return <>
-  {isLoading && <Loader icon={<KRMLogo/>}/>}
-  <Component {...pageProps} />
+  <SessionProvider session={session}>
+    {isLoading && <Loader icon={<KRMLogo/>}/>}
+    <Component {...newProps} />
+  </SessionProvider>
   </>
 }
 
