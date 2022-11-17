@@ -1,4 +1,5 @@
 import { MouseEventHandler, ReactNode } from 'react';
+import { ColorType } from '../../types/component';
 import { GetColorType } from '../styles/background';
 import { GetColorTypeButton } from '../styles/button';
 import style from './modal.module.scss';
