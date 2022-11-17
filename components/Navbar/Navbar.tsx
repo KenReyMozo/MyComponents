@@ -12,7 +12,7 @@ const Navbar = () => {
             callbackUrl : "/"
           })
 		console.log("Logout",res)
-        // router.push(res.url)
+        router.push(res.url)
 	}
 
     return <>
