@@ -11,7 +11,7 @@ import { DataHandler } from '../utils/DataHandler'
 import { signOut, signIn, useSession } from "next-auth/react";
 import { NextPage } from 'next'
 import { useRouter } from 'next/router'
-import Login from './login/Login'
+import Login from './login'
 
 const AblyChatComponent = dynamic(() => import('../components/Ably/AblyChatComponent'), { ssr: false });
 
