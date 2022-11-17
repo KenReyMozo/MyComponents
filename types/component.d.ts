@@ -1,9 +1,13 @@
 import NextAuth, { DefaultSession, DefaultAccount } from "next-auth"
+import React from "react"
 
-type ElementType = {
-    id? : string,
-    m? : string,
-    p? : string,
+declare module "react" {
+    type CElementType = {
+        id? : string,
+        m? : string,
+        p? : string,
+    }
+    
 }
 
 type SwitchType = {
