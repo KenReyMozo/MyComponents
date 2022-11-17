@@ -1,3 +1,4 @@
+import NextAuth, { DefaultSession, DefaultAccount } from "next-auth"
 
 type ElementType = {
     id? : string,

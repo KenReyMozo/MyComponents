@@ -1,0 +1,17 @@
+.background {
+    display : flex;
+    position : fixed;
+    inset : 0;
+}
+
+.main {
+    margin : auto;
+    display : flex;
+    align-items: center;
+}
+
+.vDiv {
+    height: 50px;
+    margin: 0 15px;
+    border-left: 1px solid #dfe6e9;
+}
