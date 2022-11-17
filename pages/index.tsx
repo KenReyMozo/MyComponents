@@ -14,12 +14,15 @@ import { DataHandler } from '../utils/DataHandler'
 import { getSession, signIn, useSession } from "next-auth/react";
 import { GetServerSideProps, NextPage } from 'next'
 import TCompiler from './test/TCompiler'
+import { useRouter } from 'next/router'
 
 const AblyChatComponent = dynamic(() => import('../components/Ably/AblyChatComponent'), { ssr: false });
 
 const Home : NextPage = () => {
 	
 	const session = useSession();
+
+	const router = useRouter()
 
 	const [test, setTest] = useState(false)
 
@@ -43,7 +46,9 @@ const Home : NextPage = () => {
 				password : loginData.password,
 				redirect : false
 		})
-		console.log("RES",res)
+		if(res?.ok && res.status === 200){
+			router.push("/test/TCompiler")
+		}
 }
 
 	type LoginDataType = {
@@ -68,8 +73,7 @@ const Home : NextPage = () => {
 			<Switch setState={setTest} state={test}/>
 
 			<main className={styles.main}>
-				<TCompiler/>
-				{/* <Modal
+				<Modal
 				header={[<KRMLogo key={"krm_login_logo"}/>]}
 				show={true} name={''} background={"#2d3436"}>
 					<Form onSubmit={HandleLoginSubmit}>
@@ -85,7 +89,7 @@ const Home : NextPage = () => {
 							<FormButton m='0 .1em' primary content={"Login"} type={"submit"}/>
 							<FormButton m='0 .1em' primary content={"TEST"} onClick={TestSubmit}/>
 					</Form>
-				</Modal> */}
+				</Modal>
 			</main>
 
 			<footer className={styles.footer}>
