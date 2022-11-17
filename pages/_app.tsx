@@ -8,6 +8,7 @@ import Loader from '../components/Loader/Loader'
 import { KRMLogo } from '../components/KR/Logo'
 import { Session } from 'next-auth'
 import { SessionProvider } from 'next-auth/react'
+import Navbar from '../components/Navbar/Navbar'
 config.autoAddCss = false
 
 interface CustomProps extends AppProps {
@@ -41,6 +42,7 @@ export default function App({
   return <>
   <SessionProvider session={session}>
     {isLoading && <Loader icon={<KRMLogo/>}/>}
+    <Navbar/>
     <Component {...newProps} />
   </SessionProvider>
   </>
