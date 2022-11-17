@@ -13,12 +13,16 @@ import { KRMLogo } from '../components/KR/Logo'
 import { DataHandler } from '../utils/DataHandler'
 import { getSession, signIn, useSession } from "next-auth/react";
 import { GetServerSideProps, NextPage } from 'next'
+import TCompiler from './test/TCompiler'
+import { useRouter } from 'next/router'
 
 const AblyChatComponent = dynamic(() => import('../components/Ably/AblyChatComponent'), { ssr: false });
 
 const Home : NextPage = () => {
 	
 	const session = useSession();
+
+	const router = useRouter()
 
 	const [test, setTest] = useState(false)
 
@@ -42,7 +46,9 @@ const Home : NextPage = () => {
 				password : loginData.password,
 				redirect : false
 		})
-		console.log("RES",res)
+		if(res?.ok && res.status === 200){
+			router.push("/test/TCompiler")
+		}
 }
 
 	type LoginDataType = {
