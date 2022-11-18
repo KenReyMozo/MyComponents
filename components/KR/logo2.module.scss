@@ -1,0 +1,284 @@
+.trap {
+	animation: bgChange 5s ease infinite;
+}
+
+.kr1 {
+    animation: kr1 4s ease infinite;
+}
+.kr1 div {
+    width: 10px;
+    height: 40px;
+    transform: perspective(0px) rotateY(2deg);
+}
+
+.kr2 {
+    animation: kr2 4s ease infinite;
+    transform: rotate(-135deg)
+}
+.kr2 div{
+    width: 10px;
+    height: 50px;
+    transform: perspective(0px) rotateY(2.5deg);
+}
+
+.kr3 {
+    animation: kr3 4s ease infinite;
+}
+.kr3 div{
+    width: 10px;
+    height: 40px;
+    transform: perspective(0px) rotateY(-3deg);
+}
+
+.kr4 {
+    animation : kr4 4s ease infinite;
+    transform: rotate(45deg)
+}
+.kr4 div{
+    width: 30px;
+    height: 10px;
+	transform: skew(45deg);
+}
+
+.kr5 {
+    animation: kr5 4s ease infinite;
+}
+.kr5 div{
+    width: 45px;
+    height: 10px;
+	transform: skew(-45deg);
+}
+
+.kr6 {
+    animation: kr6 4s ease infinite;
+    transform: rotate(-45deg)
+}
+.kr6 div{
+    width: 27px;
+    height: 10px;
+}
+
+.kr7 {
+    animation: kr7 4s ease infinite;
+}
+.kr7 div{
+    width: 10px;
+    height: 39px;
+	transform: skewY(45deg);
+}
+
+.kr8 {
+    animation: kr8 4s ease infinite;
+    transform: rotate(-45deg)
+}
+.kr8 div{
+    width: 10px;
+    height: 39px;
+    transform: perspective(0px) rotateY(-3deg);
+}
+
+@keyframes kr1 {
+    0% {
+        opacity: 0;
+        top: -10px;
+        left: 10px;
+    }
+    10% {
+        opacity: 1;
+        top: 10px;
+        left: 10px;
+    }
+    100% {
+        top: 10px;
+        left: 10px;
+    }
+}
+
+@keyframes kr2 {
+    0%{
+        opacity: 0;
+        top: 32px;
+        left: 33px;
+    }
+    10% {
+        opacity: 0;
+        top: 32px;
+        left: 33px;
+    }
+    20% {
+        opacity: 1;
+        top: 52px;
+        left: 13px;
+    }
+    100% {
+        top: 52px;
+        left: 13px;
+    }
+}
+
+@keyframes kr5 {
+    0%{
+        opacity: 0;
+        top: 23px;
+        left: 64px;
+    }
+    20% {
+        opacity: 0;
+        left: 64px;
+    }
+    30% {
+        opacity: 1;
+        left: 44px;
+    }
+    100% {
+        top: 23px;
+        left: 44px;
+    }
+}
+
+@keyframes kr6 {
+    0%{
+        opacity: 0;
+        top: 65px;
+        left: 38px;
+    }
+    30% {
+        opacity: 0;
+        top: 65px;
+        left: 38px;
+    }
+    40% {
+        opacity: 1;
+        top: 45px;
+        left: 58px;
+    }
+    100% {
+        top: 45px;
+        left: 58px;
+    }
+}
+
+@keyframes kr8 {
+    0%{
+        opacity: 0;
+        top: 78px;
+        left: 70px;
+    }
+    40% {
+        opacity: 0;
+        top: 78px;
+        left: 70px;
+    }
+    50% {
+        opacity: 1;
+        top: 58px;
+        left: 50px;
+    }
+    100% {
+        top: 58px;
+        left: 50px;
+    }
+}
+
+@keyframes kr7 {
+    0%{
+        opacity: 0;
+        top: 66.5px;
+        left: 50px;
+    }
+    50% {
+        opacity: 0;
+        top: 66.5px;
+    }
+    60% {
+        opacity: 1;
+        top: 46.5px;
+    }
+    100% {
+        top: 46.5px;
+        left: 50px;
+    }
+}
+
+@keyframes kr4 {
+    0%{
+        opacity: 0;
+        top: 67px;
+        left: 50px;
+    }
+    60% {
+        opacity: 0;
+        top: 67px;
+        left: 50px;
+    }
+    70% {
+        opacity: 1;
+        top: 47px;
+        left: 30px;
+    }
+    100% {
+        top: 47px;
+        left: 30px;
+    }
+}
+
+@keyframes kr3 {
+    0%{
+        opacity: 0;
+        top: 70.5px;
+        left: 15px;
+    }
+    70% {
+        opacity: 0;
+        top: 70.5px;
+    }
+    80% {
+        opacity: 1;
+        top: 50.5px;
+    }
+    100% {
+        top: 50.5px;
+        left: 15px;
+    }
+}
+
+@keyframes bgChange {
+    0% {
+        background:  #23d5ab;
+    }
+    25% {
+        background : #ee7752;
+    }
+    50% {
+        background: #e73c7e;
+    }
+    75% {
+        background: #23a6d5;
+    }
+    100% {
+        background:  #23d5ab;
+    }
+}
+
+@keyframes borderChange {
+    0% {
+        border-color:  #23d5ab;
+        transform: rotate(-135deg)
+    }
+    25% {
+        border-color:  #ee7752;
+        transform: rotate(150deg)
+    }
+    50% {
+        border-color:  #e73c7e;
+        transform: rotate(25deg)
+    }
+    75% {
+        border-color:  #23a6d5;
+        transform: rotate(-45deg)
+    }
+    100% {
+        border-color:  23d5ab;
+        transform: rotate(-135deg)
+    }
+}

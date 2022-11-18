@@ -1,7 +1,7 @@
 import { signIn, useSession } from "next-auth/react";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
-import { KRMLogo } from "../../components/KR/Logo";
+import { KRMLogo, KRMLogo2 } from "../../components/KR/Logo";
 import Modal from "../../components/Modal/Modal";
 import ValidateSession from "../../utils/auth/sessionHandler";
 import { DataHandler } from "../../utils/DataHandler";
@@ -11,7 +11,7 @@ const Login = () => {
 
     const session = useSession();
 	const router = useRouter()
-	
+
 	const HandleLoginSubmit = async (e : React.FormEvent) => {
 		e.preventDefault()
 		const res = await signIn('credentials',{
@@ -46,7 +46,7 @@ const Login = () => {
 
     return <>
         <Modal
-            header={[<KRMLogo key={"krm_login_logo"}/>]}
+            header={[<KRMLogo2 key={"krm_login_logo"}/>]}
             show={true} name={''} background={"#2d3436"}>
                 <Form onSubmit={HandleLoginSubmit}>
                         <FormInput name={'email'} m='0 0 1em 0'
