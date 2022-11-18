@@ -5,10 +5,13 @@
     right: 0;
     height: 50px;
     background: #2d3436;
-    padding: 0 10px;
+}
+
+.main {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding: 0 10px;
 }
 
 .navbarInfo {
@@ -54,4 +57,15 @@
 .open .mid {
     opacity: 0;
     transform: translate(-20px, 0);
+}
+
+.dropDown {
+    transition-duration: 200ms;
+    width: 100%;
+    background: #2d3436;
+}
+
+.linkContainer {
+    margin-left: 20px;
+    padding: 5px;
 }
