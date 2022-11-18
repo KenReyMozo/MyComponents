@@ -1,7 +1,7 @@
 import { ColorType } from '../../types/component';
 import style from './background.module.scss';
 
-export const GetColorType = ({
+export const GetColorTypeBG = ({
     primary, 
     secondary,
     success,
