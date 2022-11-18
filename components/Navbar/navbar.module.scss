@@ -3,10 +3,12 @@
     top : 0;
     left : 0;
     right: 0;
-    padding: 1em;
+    height: 50px;
     background: #2d3436;
+    padding: 0 10px;
     display: flex;
     justify-content: space-between;
+    align-items: center;
 }
 
 .navbarInfo {
@@ -24,4 +26,32 @@
 .logoutBTN:hover {
     color : #d63031;
     transition-duration: 200ms;
+}
+
+.menuButton {
+    padding: 5px;
+    display :  flex;
+    flex-direction : column;
+    justify-content : space-between;
+    width: 50px;
+    height : 45px;
+}
+.menuButton div {
+    padding: 3px 11px;
+    background-color : white;
+    border-radius : 1em;
+    transition-duration: 200ms;
+}
+
+.open .top{
+    transform: translate(0, 14px) rotate(45deg);
+    transition-duration: 200ms;
+}
+.open .down{
+    transform: translate(0, -14px) rotate(-45deg);
+    transition-duration: 200ms;
+}
+.open .mid {
+    opacity: 0;
+    transform: translate(-20px, 0);
 }

@@ -9,6 +9,7 @@ import { KRMLogo } from '../components/KR/Logo'
 import { Session } from 'next-auth'
 import { SessionProvider } from 'next-auth/react'
 import Navbar from '../components/Navbar/Navbar'
+import { Is768 } from '../components/MediaQuery/mediaQuery'
 config.autoAddCss = false
 
 interface CustomProps extends AppProps {
@@ -21,6 +22,8 @@ export default function App({
   session }: CustomProps) {
 
   const [isLoading, setIsLoading] = useState(false);
+
+  const is768 = Is768();
 
   useEffect(() => {
     Router.events.on("routeChangeStart", (url)=>{
@@ -42,7 +45,7 @@ export default function App({
   return <>
   <SessionProvider session={session}>
     {isLoading && <Loader icon={<KRMLogo/>}/>}
-    <Navbar icon={<img src='./favicon.ico' width={25} height={25}/>}/>
+    <Navbar isTablet={is768} icon={<img src='./favicon.ico' width={25} height={25}/>}/>
     <Component {...newProps} />
   </SessionProvider>
   </>

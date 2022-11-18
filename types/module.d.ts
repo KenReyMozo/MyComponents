@@ -25,8 +25,10 @@ declare module "next-auth" {
   }
 
 declare module "next" {
-  interface BasePage {
-    fallback? : string,
+  interface ResponsivePage {
+    isTablet? : boolean,
+    isMobile? : boolean,
+    isDesktop? : boolean,
   }
   
 }
