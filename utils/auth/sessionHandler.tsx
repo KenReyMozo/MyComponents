@@ -15,7 +15,7 @@ type SessionType = {
 }
 
 const ValidateSession = (session : SessionType) => {
-    if(session.data === null || session.status !== "authenticated")
+    if(session.data === undefined || session.data === null || session.status !== "authenticated")
         return false
     return true
 }

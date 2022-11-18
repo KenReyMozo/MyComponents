@@ -1,8 +1,9 @@
 import { signIn, useSession } from "next-auth/react";
 import { useRouter } from "next/router";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { KRMLogo } from "../../components/KR/Logo";
 import Modal from "../../components/Modal/Modal";
+import ValidateSession from "../../utils/auth/sessionHandler";
 import { DataHandler } from "../../utils/DataHandler";
 import Form, { FormButton, FormInput } from "../../X-components/Form";
 
@@ -10,12 +11,7 @@ const Login = () => {
 
     const session = useSession();
 	const router = useRouter()
-
-    const TestSubmit = (e : React.FormEvent) => {
-		e.preventDefault();
-		console.log("TEST",session)
-	}
-
+	
 	const HandleLoginSubmit = async (e : React.FormEvent) => {
 		e.preventDefault()
 		const res = await signIn('credentials',{
@@ -29,6 +25,12 @@ const Login = () => {
 		}
 	}
 
+	useEffect(() => {
+		if(ValidateSession(session)) {
+			router.push("/home")
+		}
+	},[])
+
 	type LoginDataType = {
 		email : string,
 		password : string,
@@ -40,6 +42,7 @@ const Login = () => {
 		email : "",
 		password : "",
 	})
+
 
     return <>
         <Modal

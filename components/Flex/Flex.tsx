@@ -1,6 +1,6 @@
 import { ReactNode } from "react";
 import { CElementType, ColorType } from "../../types/component";
-import { GetColorType } from "../styles/background";
+import { GetColorTypeBG } from "../styles/background";
 import style from "./flex.module.scss";
 
 type FlexType = {
@@ -25,7 +25,7 @@ const Flex = ({
     p, m, id,
 } : FlexType) => {
     return <div id={id}
-                className={`${style.flex} ${childGrow && style.childGrow} ${GetColorType({ primary, secondary, success, warning, danger})}`}
+                className={`${style.flex} ${childGrow && style.childGrow} ${GetColorTypeBG({ primary, secondary, success, warning, danger})}`}
                 style={{padding : p, margin : m, flexDirection : direction, justifyContent : jusCon, alignItems : aliItem }}> 
         {children}
     </div>

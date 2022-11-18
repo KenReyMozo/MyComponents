@@ -1,6 +1,6 @@
 import { MouseEventHandler, ReactNode } from 'react';
 import { ColorType } from '../../types/component';
-import { GetColorType } from '../styles/background';
+import { GetColorTypeBG } from '../styles/background';
 import { GetColorTypeButton } from '../styles/button';
 import style from './modal.module.scss';
 
@@ -103,7 +103,7 @@ const Modal = ( {
         <div className={`${style.main}`} style={{display : show ? 'flex' : 'none'}}>
             <div className={`${style.modal}`}
                 style={GetModalStyle(width,background)}>
-                <div className={`${style.header} ${GetColorType({primary, secondary, success, warning, danger})}`}>
+                <div className={`${style.header} ${GetColorTypeBG({primary, secondary, success, warning, danger})}`}>
                 {title}
                 {header && header.map((item) => {
                     return item;
