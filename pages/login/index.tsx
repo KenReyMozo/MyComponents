@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { KRMLogo, KRMLogo2 } from "../../components/KR/Logo";
 import Modal from "../../components/Modal/Modal";
 import ValidateSession from "../../utils/auth/sessionHandler";
+import { lmsLogin } from "../../utils/auth/testAuth";
 import { DataHandler } from "../../utils/DataHandler";
 import Form, { FormButton, FormInput } from "../../X-components/Form";
 
@@ -14,15 +15,17 @@ const Login = () => {
 
 	const HandleLoginSubmit = async (e : React.FormEvent) => {
 		e.preventDefault()
-		const res = await signIn('credentials',{
-				username : loginData.email,
-				password : loginData.password,
-				redirect : false
-		})
-		console.log("Login",res)
-		if(res?.ok && res.status === 200){
-			router.push("/home")
-		}
+		// const res = await signIn('credentials',{
+		// 		username : loginData.email,
+		// 		password : loginData.password,
+		// 		redirect : false
+		// })
+		// console.log("Login",res)
+		// if(res?.ok && res.status === 200){
+		// 	router.push("/home")
+		// }
+		const res = await lmsLogin(loginData.email , loginData.password)
+		console.log("RES",res)
 	}
 
 	useEffect(() => {
