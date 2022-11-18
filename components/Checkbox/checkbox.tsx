@@ -1,5 +1,10 @@
 import style from "./checkbox.module.css"
 
+type SwitchType = {
+    state : boolean;
+    setState : React.Dispatch<React.SetStateAction<boolean>>;
+}
+
 const Switch = ({
     state,
     setState

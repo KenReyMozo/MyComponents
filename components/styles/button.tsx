@@ -1,4 +1,5 @@
 import { MouseEventHandler } from 'react';
+import { ColorType } from '../../types/component';
 import style from './button.module.scss';
 
 type BaseButton = {

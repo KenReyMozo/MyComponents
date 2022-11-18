@@ -4,5 +4,20 @@
     left : 0;
     right: 0;
     padding: 1em;
-    background: #dfe6e9;
+    background: #2d3436;
+    display: flex;
+    justify-content: space-between;
+}
+
+.logoutBTN {
+    font-size: 1.2em;
+    color : #dfe6e9;
+    background: none;
+    border : none;
+    transition-duration: 200ms;
+}
+
+.logoutBTN:hover {
+    color : #d63031;
+    transition-duration: 200ms;
 }

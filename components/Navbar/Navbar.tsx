@@ -1,10 +1,11 @@
 import style from "./navbar.module.scss"
-import { signOut } from "next-auth/react";
+import { signOut, useSession } from "next-auth/react";
 import { useRouter } from "next/router";
 
 const Navbar = () => {
 
     const router = useRouter();
+    const session = useSession();
 
     const HandleLogoutSubmit = async () => {
 		const res = await signOut({
@@ -15,9 +16,16 @@ const Navbar = () => {
         router.push(res.url)
 	}
 
+    if(session.data === null || session.status !== "authenticated"){
+        return <></>
+    }
     return <>
         <div className={style.navbar}>
-            <button onClick={HandleLogoutSubmit}>Logout</button>
+            <div>{session.data.user.username}</div>
+            <button
+                className={style.logoutBTN}
+                onClick={HandleLogoutSubmit}>Logout
+            </button>
         </div>
     </>
 }

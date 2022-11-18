@@ -1,14 +1,5 @@
+import React from "react"
 
-type ElementType = {
-    id? : string,
-    m? : string,
-    p? : string,
-}
-
-type SwitchType = {
-    state : boolean;
-    setState : React.Dispatch<React.SetStateAction<boolean>>;
-}
 type Responsive  = {
     view : boolean;
     expander? : Function;
@@ -19,4 +10,10 @@ type ColorType = {
     success? : boolean,
     warning? : boolean,
     danger? : boolean,
+}
+
+type CElementType = {
+    id? : string,
+    m? : string,
+    p? : string,
 }

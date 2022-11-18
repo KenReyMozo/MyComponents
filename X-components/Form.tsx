@@ -1,6 +1,7 @@
 import style from "./form.module.scss";
-import React, { BaseSyntheticEvent, ReactNode } from "react"
+import React, { ReactNode } from "react"
 import { GetColorTypeButton } from "../components/styles/button";
+import { CElementType, ColorType } from "../types/component";
 
 type BaseInputType = {
     name : string,
@@ -11,7 +12,7 @@ type BaseInputType = {
 type FormInputType = {
     placeHolder? : string,
     type? : string
-} & BaseInputType & ElementType
+} & BaseInputType & CElementType
 
 export const FormInput = ( {
     type,
@@ -56,7 +57,7 @@ type FormButtonType = {
     name? : string,
     content? : ReactNode,
     type? : "button" | "submit" | "reset" ,
-} & ColorType & ElementType
+} & ColorType & CElementType
 
 export const FormButton = ({
     onClick,
@@ -83,7 +84,7 @@ export const FormButton = ({
 type FormType = {
     children? : ReactNode,
     onSubmit? : React.FormEventHandler,
-} & ElementType & ElementType
+} & CElementType
 
 const Form = ({
     children,

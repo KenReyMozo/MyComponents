@@ -1,4 +1,4 @@
-import { signOut, signIn, useSession } from "next-auth/react";
+import { signIn, useSession } from "next-auth/react";
 import { useRouter } from "next/router";
 import { useState } from "react";
 import { KRMLogo } from "../../components/KR/Logo";
@@ -13,7 +13,7 @@ const Login = () => {
 
     const TestSubmit = (e : React.FormEvent) => {
 		e.preventDefault();
-		console.log("RESR",session)
+		console.log("TEST",session)
 	}
 
 	const HandleLoginSubmit = async (e : React.FormEvent) => {
@@ -23,6 +23,7 @@ const Login = () => {
 				password : loginData.password,
 				redirect : false
 		})
+		console.log("Login",res)
 		if(res?.ok && res.status === 200){
 			router.push("/home")
 		}
@@ -40,14 +41,6 @@ const Login = () => {
 		password : "",
 	})
 
-	const HandleLogoutSubmit = async () => {
-		const res = await signOut({
-            redirect : false ,
-            callbackUrl : "/"
-          })
-		console.log("Logout",res)
-	}
-
     return <>
         <Modal
             header={[<KRMLogo key={"krm_login_logo"}/>]}
@@ -62,9 +55,7 @@ const Login = () => {
                             placeHolder={"password"}
                             onChange={LoginDataHandler}
                             value={loginData.password}/>
-                        <FormButton m='0 .1em' primary content={"Login"} type={"submit"}/>
-                        <FormButton m='0 .1em' primary content={"TEST"} onClick={TestSubmit}/>
-                        <FormButton m='0 .1em' primary content={"Logout"} onClick={HandleLogoutSubmit}/>
+                        <FormButton primary content={"Login"} type={"submit"}/>
                 </Form>
             </Modal>
     </>

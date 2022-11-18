@@ -1,6 +1,4 @@
-import React from "react";
 import NextAuth, { DefaultSession, DefaultAccount } from "next-auth"
-
 
 declare module "next-auth" {
     /**
@@ -23,4 +21,12 @@ declare module "next-auth" {
       email : string,
       username : string,
     }
+
   }
+
+declare module "next" {
+  interface BasePage {
+    fallback? : string,
+  }
+  
+}
