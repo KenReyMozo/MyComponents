@@ -14,21 +14,7 @@ const Home = () => {
 
     return <Container m="70px 0">
         <Flex>
-            <div style={{ margin : "auto", color : "white"}}>
-                Testing : {session.data.user.username}
-            </div>
-            <div style={{ margin : "auto", color : "white"}}>
-                Testing : {session.data.user.username}
-            </div>
-            <div style={{ margin : "auto", color : "white"}}>
-                Testing : {session.data.user.username}
-            </div>
-            <div style={{ margin : "auto", color : "white"}}>
-                Testing : {session.data.user.username}
-            </div>
-            <div style={{ margin : "auto", color : "white"}}>
-                Testing : {session.data.user.username}
-            </div>
+            
         </Flex>
     </Container>
 }
