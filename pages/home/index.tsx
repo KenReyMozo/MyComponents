@@ -46,8 +46,8 @@ const Home = () => {
         </Flex>
         <Container m="20px auto" mxw="500px">
             <Table w="100%" primary>
-                {List.map((test) => {
-                    return <TableInfo secondary colSpan={3} isTablet={is768} data={test}/>
+                {List.map((test,i) => {
+                    return <TableInfo key={i} secondary colSpan={3} isTablet={is768} data={test}/>
                 })}
             </Table>
         </Container>

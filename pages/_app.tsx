@@ -65,7 +65,7 @@ export default function App({
     <Navbar
       mainLinks={TestLinks}
       isTablet={is768}
-      icon={<img src='./favicon.ico'
+      icon={<img src='./favicon.ico' alt='Welcome my friend'
       width={25} height={25}/>}/>
     <Component {...newProps} />
   </SessionProvider>

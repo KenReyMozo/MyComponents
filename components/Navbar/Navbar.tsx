@@ -55,8 +55,9 @@ const Navbar = ({
             </button>
             </div>
             <div className={style.dropDown} style={open ? {marginLeft : "0px"} : {marginLeft : "-100%"}}>
-                {mainLinks?.map((cLink) => {
+                {mainLinks?.map((cLink,i) => {
                     return <RecursiveLink
+                        key={`${i}-${cLink.name}`}
                         link={cLink.link}
                         name={cLink.name}
                         childs={cLink.childs}/>
@@ -85,8 +86,9 @@ const RecursiveLink = ({
     return <div className={style.linkContainer}>
         {icon}<Link href={link}>{name}</Link>
         <button onClick={()=>{setOpen(prev=>!prev)}}>G</button>
-        {(childs && open)&& <div>{childs.map((cLink) => {
+        {(childs && open)&& <div>{childs.map((cLink, i) => {
             return <RecursiveLink
+                    key={`${i}-${cLink.name}`}
                     link={cLink.link}
                     name={cLink.name}
                     childs={cLink.childs}/>
