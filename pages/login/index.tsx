@@ -49,16 +49,16 @@ const Login = () => {
             header={[<KRMLogo2 key={"krm_login_logo"}/>]}
             show={true} name={''} background={"#2d3436"}>
                 <Form onSubmit={HandleLoginSubmit}>
-                        <FormInput name={'email'} m='0 0 1em 0'
-                            placeHolder={"sample@email.com"}
-                            onChange={LoginDataHandler}
-                            value={loginData.email}/>
-                        <FormInput name={'password'} m='0 0 1em 0'
-                            type={"password"}
-                            placeHolder={"password"}
-                            onChange={LoginDataHandler}
-                            value={loginData.password}/>
-                        <FormButton primary content={"Login"} type={"submit"}/>
+					<FormInput name={'email'} m='0 0 1em 0'
+						placeHolder={"sample@email.com"}
+						onChange={LoginDataHandler}
+						value={loginData.email}/>
+					<FormInput name={'password'} m='0 0 1em 0'
+						type={"password"}
+						placeHolder={"password"}
+						onChange={LoginDataHandler}
+						value={loginData.password}/>
+					<FormButton primary content={"Login"} type={"submit"}/>
                 </Form>
             </Modal>
     </>

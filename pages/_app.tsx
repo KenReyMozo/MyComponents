@@ -42,10 +42,31 @@ export default function App({
   
   const newProps = {session, ...pageProps}
 
+  const TestLinks = [
+    {link : "/home", name : "Home", childs : [{
+      link : "/home", name : "Link1"
+    }]
+    },
+    {link : "/home", name : "Home2", childs : [{
+      link : "/home", name : "Link2"
+    }]
+    },
+    {link : "/home", name : "Home3"},
+    {link : "/home", name : "Home4", childs : [{
+      link : "/home", name : "Link4" , childs : [{
+        link : "/home", name : "Link4.5"
+      }]
+    }]},
+  ]
+
   return <>
   <SessionProvider session={session}>
     {isLoading && <Loader icon={<KRMLogo/>}/>}
-    <Navbar isTablet={is768} icon={<img src='./favicon.ico' width={25} height={25}/>}/>
+    <Navbar
+      mainLinks={TestLinks}
+      isTablet={is768}
+      icon={<img src='./favicon.ico'
+      width={25} height={25}/>}/>
     <Component {...newProps} />
   </SessionProvider>
   </>

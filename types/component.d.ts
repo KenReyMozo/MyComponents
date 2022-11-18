@@ -16,4 +16,6 @@ type CElementType = {
     id? : string,
     m? : string,
     p? : string,
+    w? : string,
+    h? : string,
 }
