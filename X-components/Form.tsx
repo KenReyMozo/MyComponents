@@ -1,7 +1,7 @@
 import style from "./form.module.scss";
-import React, { BaseSyntheticEvent, CElementType, ReactNode } from "react"
+import React, { ReactNode } from "react"
 import { GetColorTypeButton } from "../components/styles/button";
-import { ColorType } from "../types/component";
+import { CElementType, ColorType } from "../types/component";
 
 type BaseInputType = {
     name : string,

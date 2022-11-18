@@ -1,4 +1,5 @@
-import { CElementType, ReactNode } from "react";
+import { ReactNode } from "react";
+import { CElementType } from "../../types/component";
 
 type ContainerType = {
     children? : ReactNode,

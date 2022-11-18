@@ -1,18 +1,23 @@
 import style from "./checkbox.module.css"
 
-// const Switch = ({
-//     state,
-//     setState
-// } : SwitchType) => {
+type SwitchType = {
+    state : boolean;
+    setState : React.Dispatch<React.SetStateAction<boolean>>;
+}
 
-//     const onChange = () => {
-//         setState(prev => !prev)
-//     }
+const Switch = ({
+    state,
+    setState
+} : SwitchType) => {
 
-//     return <label className={style.switch}>
-//         <input type="checkbox" onChange={onChange} checked={state}/>
-//         <span className={`${style.slider} ${style.round}`}/>
-//   </label>
-// }
+    const onChange = () => {
+        setState(prev => !prev)
+    }
 
-// export default Switch;
+    return <label className={style.switch}>
+        <input type="checkbox" onChange={onChange} checked={state}/>
+        <span className={`${style.slider} ${style.round}`}/>
+  </label>
+}
+
+export default Switch;

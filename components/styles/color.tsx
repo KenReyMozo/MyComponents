@@ -1,3 +1,4 @@
+import { ColorType } from '../../types/component';
 import style from './color.module.scss';
 
 export const GetColor = ({

@@ -1,5 +1,5 @@
-import { CElementType, ReactNode } from "react";
-import { ColorType } from "../../types/component";
+import { ReactNode } from "react";
+import { CElementType, ColorType } from "../../types/component";
 import { GetColorType } from "../styles/background";
 import style from "./flex.module.scss";
 
