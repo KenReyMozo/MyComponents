@@ -9,16 +9,25 @@ const Home = () => {
 
     const session = useSession()
 
-    if(session.data === null || session.data === undefined){
+    if(session.data === null){
         return <ErrorPage code={409} message={"Oops! something went wrong."}/>
     }
 
     return <Container m="70px 0">
         <Flex jusCon="space-around">
-            <Card>
+            <Card m=".5em" primary>
                 <span style={{color : "white"}}>Ken</span>
             </Card>
-            <Card>
+            <Card m=".5em" secondary>
+                <span style={{color : "white"}}>Ken</span>
+            </Card>
+            <Card m=".5em" success>
+                <span style={{color : "white"}}>Ken</span>
+            </Card>
+            <Card m=".5em" warning>
+                <span style={{color : "white"}}>Ken</span>
+            </Card>
+            <Card m=".5em" danger>
                 <span style={{color : "white"}}>Ken</span>
             </Card>
         </Flex>

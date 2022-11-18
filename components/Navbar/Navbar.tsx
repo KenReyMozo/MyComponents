@@ -2,7 +2,13 @@ import style from "./navbar.module.scss"
 import { signOut, useSession } from "next-auth/react";
 import { useRouter } from "next/router";
 
-const Navbar = () => {
+type NavbarType = {
+    icon? : JSX.Element,
+}
+
+const Navbar = ({
+    icon,
+} : NavbarType) => {
 
     const router = useRouter();
     const session = useSession();
@@ -21,7 +27,7 @@ const Navbar = () => {
     }
     return <>
         <div className={style.navbar}>
-            <div>{session.data.user.username}</div>
+            <div className={style.navbarInfo}>{icon}{session.data.user.username}</div>
             <button
                 className={style.logoutBTN}
                 onClick={HandleLogoutSubmit}>Logout

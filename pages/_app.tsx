@@ -42,7 +42,7 @@ export default function App({
   return <>
   <SessionProvider session={session}>
     {isLoading && <Loader icon={<KRMLogo/>}/>}
-    <Navbar/>
+    <Navbar icon={<img src='./favicon.ico' width={25} height={25}/>}/>
     <Component {...newProps} />
   </SessionProvider>
   </>

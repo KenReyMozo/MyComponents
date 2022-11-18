@@ -1,6 +1,6 @@
 import { signIn, useSession } from "next-auth/react";
 import { useRouter } from "next/router";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { KRMLogo } from "../../components/KR/Logo";
 import Modal from "../../components/Modal/Modal";
 import { DataHandler } from "../../utils/DataHandler";
@@ -29,6 +29,13 @@ const Login = () => {
 		}
 	}
 
+
+	useEffect(() => {
+		if(session.data !== null) {
+			router.push("/home")
+		}
+	},[])
+
 	type LoginDataType = {
 		email : string,
 		password : string,
@@ -40,6 +47,7 @@ const Login = () => {
 		email : "",
 		password : "",
 	})
+
 
     return <>
         <Modal

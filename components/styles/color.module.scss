@@ -2,16 +2,21 @@
 
 .primary {
     color : base.$primaryColor;
+    border-color : base.$primaryColor;
 }
 .secondary {
     color : base.$secondaryColor;
+    border-color : base.$secondaryColor;
 }
 .success {
     color : base.$successColor ;
+    border-color : base.$successColor ;
 }
 .warning {
     color : base.$warningColor;
+    border-color : base.$warningColor;
 }
 .danger {
     color : base.$dangerColor;
+    border-color : base.$dangerColor;
 }
