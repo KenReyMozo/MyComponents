@@ -1,8 +1,7 @@
 import style from "./navbar.module.scss"
 import { signOut, useSession } from "next-auth/react";
 import { useRouter } from "next/router";
-import { ResponsivePage } from "next";
-import { useState } from "react";
+import { ResponsivePage, useState } from "react";
 import Link from "next/link";
 
 type NavbarType = {

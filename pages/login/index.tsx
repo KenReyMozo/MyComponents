@@ -24,14 +24,18 @@ const Login = () => {
 		// if(res?.ok && res.status === 200){
 		// 	router.push("/home")
 		// }
-		const res = await lmsLogin(loginData.email , loginData.password)
-		console.log("RES",res)
+		// const res = await lmsLogin(loginData.email , loginData.password)
+		await signIn('credentials',{
+			username : loginData.email,
+			password : loginData.password,
+		})
 	}
+	console.log("RES",session)
 
 	useEffect(() => {
-		if(ValidateSession(session)) {
-			router.push("/home")
-		}
+		// if(ValidateSession(session)) {
+		// 	router.push("/home")
+		// }
 	},[])
 
 	type LoginDataType = {

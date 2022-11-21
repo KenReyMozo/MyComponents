@@ -4,9 +4,7 @@ import NextAuth, { User } from "next-auth"
 // import AppleProvider from "next-auth/providers/apple"
 import CredentialsProvider from "next-auth/providers/credentials"
 import OAuthProvider from "next-auth/providers/auth0";
-
-
-const BASE_URL = "OOF"
+import { lmsLogin } from "../../../utils/auth/testAuth";
 
 // For more information on each option (and a full list of options) go to
 // https://next-auth.js.org/configuration/options
@@ -21,27 +19,31 @@ export default NextAuth({
         password: { label: "Password", type: "password" }
       },
       async authorize(credentials, req){
-        const {username, password} = credentials as any;
-        // const authRequest = await axios.post(`${BASE_URL}/api/auth/local`,{
+        const {username, password} = credentials as {
+          username : string;
+          password : string;
+        }
+        
+        const authData = await lmsLogin(username,password)
+        if(authData === null){
+          throw new Error("Something went wrong!")
+        }
+
+        return authData
+
+        // const authRequest = await axios.post(`/api/auth/local`,{
         //   identifier : username,
         //   password : password
         //   })
-        const authRequest = {
-            status : 200,
-            data : {user : {
-                username : username,
-                email : password,
-            },
-            jwt : "oof oof"},
-        }
-        
-        const user : User = {
-            jwt: authRequest.data.jwt,
-            username: authRequest.data.user.username,
-            email: authRequest.data.user.email,
-            id: ""
-        }
-        return user
+        // if(!(authRequest.status === 200)) {
+        //   throw new Error("Something went wrong!")
+        // }
+        // return {
+        //   jwt : authRequest.data.jwt,
+        //   username : authRequest.data.user.username,
+        //   email: authRequest.data.user.email,
+        //   role : authRequest.data.user.role,
+        // }
       },
       
     })
@@ -124,11 +126,9 @@ export default NextAuth({
     // async signIn({ user, account, profile, email, credentials }) { return true },
     // async redirect({ url, baseUrl }) { return baseUrl },
     async session({ session, token, user }) {
-      session.accessToken = token.accessToken
       if(token){
         const user = token.user as User
         session.user = user;
-        // session.account = token.account;
       }
 
       return session 
