@@ -1,5 +1,5 @@
 import axios from "axios";
-import NextAuth, { User } from "next-auth"
+import NextAuth, { User, UserInfoStudent, UserInfoTeacher } from "next-auth"
 // import EmailProvider from "next-auth/providers/email"
 // import AppleProvider from "next-auth/providers/apple"
 import CredentialsProvider from "next-auth/providers/credentials"
@@ -127,7 +127,7 @@ export default NextAuth({
     // async redirect({ url, baseUrl }) { return baseUrl },
     async session({ session, token, user }) {
       if(token){
-        const user = token.user as User
+        const user = token.user as UserInfoTeacher | UserInfoStudent
         session.user = user;
       }
 

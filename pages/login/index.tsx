@@ -30,13 +30,20 @@ const Login = () => {
 			password : loginData.password,
 		})
 	}
-	console.log("RES",session)
 
 	useEffect(() => {
-		// if(ValidateSession(session)) {
-		// 	router.push("/home")
-		// }
-	},[])
+		if(ValidateSession(session)) {
+			const userType = session.data?.user.type
+			if(userType === "Student"){
+				console.log("Is a Student")
+				router.push("/student/dashboard")
+			}
+			if(userType === "Teacher"){
+				console.log("Is a Teacher")
+				router.push("/teacher/dashboard")
+			}
+		}
+	},[session])
 
 	type LoginDataType = {
 		email : string,

@@ -23,6 +23,21 @@ button {
   box-sizing: border-box;
 }
 
+main {
+  margin-top : 70px;
+  margin-right : 10px;
+}
+
+.expanded {
+  transition-duration : 300ms;
+  margin-left : 210px;
+}
+
+.collapsed {
+  transition-duration : 300ms;
+  margin-left : 20px;
+}
+
 @media (prefers-color-scheme: dark) {
   html {
     color-scheme: dark;

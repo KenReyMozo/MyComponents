@@ -10,6 +10,7 @@ import { Session } from 'next-auth'
 import { SessionProvider } from 'next-auth/react'
 import Navbar from '../components/Navbar/Navbar'
 import { Is768 } from '../components/MediaQuery/mediaQuery'
+import Sidebar from '../components/Sidebar/Sidebar'
 config.autoAddCss = false
 
 interface CustomProps extends AppProps {
@@ -59,6 +60,22 @@ export default function App({
     }]},
   ]
 
+  const TeacherLinks = [
+    { link : "/teacher/dashboard", name : "My Dashboard" },
+    { link : "/teacher/subject-management", name : "Subject Management" },
+    { link : "/teacher/class-management", name : "Class Management" },
+    { link : "teacher/class-calendar", name : "Class Calendar" },
+    { link : null, name : "Class Monitoring", childs : [
+      { link : "/student-logs", name : "Student Logs" },
+      { link : "/pending-works", name : "Pending Works" },
+    ]},
+    { link : null, name : "Online Meetings", childs : [
+      { link : "/online-class", name : "Online Class" },
+      { link : "/faculty-meeting", name : "Faculty Meeting" },
+    ]},
+    { link : "/lms-tutorials", name : "LMS Tutorials" },
+  ]
+
   return <>
   <SessionProvider session={session}>
     {isLoading && <Loader icon={<KRMLogo/>}/>}
@@ -67,7 +84,10 @@ export default function App({
       isTablet={is768}
       icon={<img src='./favicon.ico' alt='Welcome my friend'
       width={25} height={25}/>}/>
-    <Component {...newProps} />
+    <Sidebar view={is768} mainLinks={TeacherLinks}/>
+    <main className={`${is768 ? "collapsed" : "expanded"}`}>
+      <Component {...newProps} />
+    </main>
   </SessionProvider>
   </>
 }

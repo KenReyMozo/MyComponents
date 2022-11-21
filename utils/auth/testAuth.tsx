@@ -1,4 +1,5 @@
-import { User } from "next-auth";
+import axios from "axios";
+import { Section, StudentUser, Subject, TeacherUser, User } from "next-auth";
 import { smsAxiosInstanceCreator, smsOriginalInstance } from "../axiosInstance";
 
 type APISchools = {
@@ -26,7 +27,6 @@ export const lmsLogin = async (identifier : string, password : string) => {
     if(tenantRes.domains.length <= 0) return null
     const schoolBaseUrl = `https://${tenantRes.domains[0].domain}/`
     const smsAxiosInstance = await smsAxiosInstanceCreator(schoolBaseUrl)
-
 
     type LogKeys = {
         username: string;
@@ -64,5 +64,69 @@ export const lmsLogin = async (identifier : string, password : string) => {
     .catch((err) => {
         return null
     })
-    return smsLogin;
+
+    if(smsLogin === null) return null;
+
+    const userRoles = await smsAxiosInstance.get('api/me/roles', {
+        headers: {
+            'Authorization': `Bearer ${smsLogin.access_token}`,
+            'Content-Type': 'applicaton/json'
+        }
+    })
+    .then((res) => {
+        return res.data as "Teacher" | "Student"
+    })
+    .catch((err) => {
+        return null
+    })
+
+    if(userRoles === null) return null
+    if(userRoles.length <= 0) return null
+    const userRole = userRoles[0];
+
+    const userInfo = await smsAxiosInstance.get(`api/${userRole.toLowerCase()}/me`, {
+        headers: {
+            'Authorization': `Bearer ${smsLogin.access_token}`,
+            'Content-Type': 'applicaton/json'
+        }
+    })
+    .then((res) => {
+        if(userRole === "Teacher")
+            return res.data as TeacherUser
+        if(userRole === "Student")
+            return res.data as StudentUser
+        return null
+    })
+    .catch((err) => {
+        return null
+    })
+
+    if(userInfo === null) return null
+
+    const processLogData = {
+        ...smsLogin,
+        ...(userRole === "Teacher" ? {
+            type : "Teacher" as "Teacher" | "Student",
+            userInfo : userInfo as TeacherUser,
+        } : {
+            type :  "Student" as "Teacher" | "Student",
+            userInfo : userInfo as StudentUser,
+        }),
+    };
+
+    return processLogData
+}
+
+// export const BASE_URL = 'http://localhost:1337/';
+export const BASE_URL = "https://lms-backend.sandboxprosolutions.com";
+
+export const getTeacherSubjects = async () => {
+    
+    await axios.get(`${BASE_URL}/section-subject-assessments`)
+        .then((res) => {
+            console.log("SSA",res)
+        })
+        .catch((err) => {
+            console.log("ERR",err)
+        })
 }

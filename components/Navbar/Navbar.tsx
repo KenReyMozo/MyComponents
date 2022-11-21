@@ -66,11 +66,12 @@ const Navbar = ({
     </>
 }
 
-type RecursiveLinkType = {
-    link : string,
+export type RecursiveLinkType = {
+    link : string | null,
     icon? : string,
     name : string,
     childs? : RecursiveLinkType[],
+    active? : string,
 }
 
 const RecursiveLink = ({
@@ -83,7 +84,7 @@ const RecursiveLink = ({
     const [open, setOpen] = useState(false)
 
     return <div className={style.linkContainer}>
-        {icon}<Link href={link}>{name}</Link>
+        {icon}<Link href={link ?? "#"}>{name}</Link>
         <button onClick={()=>{setOpen(prev=>!prev)}}>G</button>
         {(childs && open)&& <div>{childs.map((cLink, i) => {
             return <RecursiveLink

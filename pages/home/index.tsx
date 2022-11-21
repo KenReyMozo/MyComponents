@@ -1,5 +1,7 @@
+import axios from "axios";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/router";
+import { useEffect } from "react";
 import Card from "../../components/Card/Card";
 import Container from "../../components/Container/Container";
 import Flex from "../../components/Flex/Flex";
@@ -7,10 +9,29 @@ import { Is768 } from "../../components/MediaQuery/mediaQuery";
 import ErrorPage from "../../components/Page/ErrorPage";
 import Table, { TableInfo } from "../../components/Table/Table";
 
+// export const BASE_URL = 'http://localhost:1337/';
+export const BASE_URL = "https://lms-backend.sandboxprosolutions.com";
+
 const Home = () => {
 
     const session = useSession()
     const is768 = Is768()
+
+    console.log("Session!",session)
+
+    const Set_SectionSubjectAssessment = async () => {
+        await axios.get(`${BASE_URL}/section-subject-assessments`)
+        .then((res) => {
+            console.log("SSA",res)
+        })
+        .catch((err) => {
+            console.log("ERR",err)
+        })
+    }
+
+    useEffect(() => {
+        Set_SectionSubjectAssessment();
+    },[])
 
     const List = [
         {name : "Kenny", val1 : 500.9, val2 : 14.24, val3 : "Good"},
