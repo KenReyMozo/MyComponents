@@ -1,4 +1,4 @@
-import { UserLMS } from "next-auth";
+import { User } from "next-auth";
 import { smsAxiosInstanceCreator, smsOriginalInstance } from "../axiosInstance";
 
 type APISchools = {
@@ -59,7 +59,7 @@ export const lmsLogin = async (identifier : string, password : string) => {
         }
     })
     .then((res) => {
-       return res.data as UserLMS
+       return res.data as User
     })
     .catch((err) => {
         return null
