@@ -11,6 +11,7 @@ import { SessionProvider } from 'next-auth/react'
 import Navbar from '../components/Navbar/Navbar'
 import { Is768 } from '../components/MediaQuery/mediaQuery'
 import Sidebar from '../components/Sidebar/Sidebar'
+import Layout from '../components/Layout/Layout'
 config.autoAddCss = false
 
 interface CustomProps extends AppProps {
@@ -43,48 +44,12 @@ export default function App({
   
   const newProps = {session, ...pageProps}
 
-  const TestLinks = [
-    {link : "/home", name : "Home", childs : [{
-      link : "/home", name : "Link1"
-    }]
-    },
-    {link : "/home", name : "Home2", childs : [{
-      link : "/home", name : "Link2"
-    }]
-    },
-    {link : "/home", name : "Home3"},
-    {link : "/home", name : "Home4", childs : [{
-      link : "/home", name : "Link4" , childs : [{
-        link : "/home", name : "Link4.5"
-      }]
-    }]},
-  ]
-
-  const TeacherLinks = [
-    { link : "/teacher/dashboard", name : "My Dashboard" },
-    { link : "/teacher/subject-management", name : "Subject Management" },
-    { link : "/teacher/class-management", name : "Class Management" },
-    { link : "teacher/class-calendar", name : "Class Calendar" },
-    { link : null, name : "Class Monitoring", childs : [
-      { link : "/student-logs", name : "Student Logs" },
-      { link : "/pending-works", name : "Pending Works" },
-    ]},
-    { link : null, name : "Online Meetings", childs : [
-      { link : "/online-class", name : "Online Class" },
-      { link : "/faculty-meeting", name : "Faculty Meeting" },
-    ]},
-    { link : "/lms-tutorials", name : "LMS Tutorials" },
-  ]
+  
 
   return <>
   <SessionProvider session={session}>
     {isLoading && <Loader icon={<KRMLogo/>}/>}
-    <Navbar
-      mainLinks={TestLinks}
-      isTablet={is768}
-      icon={<img src='./favicon.ico' alt='Welcome my friend'
-      width={25} height={25}/>}/>
-    <Sidebar view={is768} mainLinks={TeacherLinks}/>
+    <Layout is768={is768}/>
     <main className={`${is768 ? "collapsed" : "expanded"}`}>
       <Component {...newProps} />
     </main>
