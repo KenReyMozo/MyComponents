@@ -14,8 +14,8 @@ type ColorType = {
 
 type CElementType = {
     id? : string,
-    m? : string,
-    p? : string,
-    w? : string,
-    h? : string,
+    m? : string | number,
+    p? : string | number,
+    w? : string | number,
+    h? : string | number,
 }

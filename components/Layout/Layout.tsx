@@ -4,12 +4,10 @@ import Navbar from "../Navbar/Navbar";
 import Sidebar from "../Sidebar/Sidebar";
 
 type LayoutType = {
-    children : ReactNode,
     is768 : boolean,
 }
 
 const Layout = ({
-    children,
     is768,
 } : LayoutType) => {
 

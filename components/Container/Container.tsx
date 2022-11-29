@@ -3,10 +3,10 @@ import { CElementType } from "../../types/component";
 
 type ContainerType = {
     children? : ReactNode,
-    mxw? : string,
-    mxh? : string,
-    mnh? : string,
-    mnw? : string,
+    mxw? : string | number,
+    mxh? : string | number,
+    mnh? : string | number,
+    mnw? : string | number,
 } & CElementType
 
 const Container = ({
