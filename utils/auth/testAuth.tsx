@@ -2,6 +2,8 @@ import axios from "axios";
 import { Section, StudentUser, Subject, TeacherUser, User } from "next-auth";
 import { smsAxiosInstanceCreator, smsOriginalInstance } from "../axiosInstance";
 
+import { setCookie } from 'cookies-next';
+
 type APISchools = {
     domains : {domain : string}[];
     name : string;
@@ -9,6 +11,8 @@ type APISchools = {
 
 export const lmsLogin = async (identifier : string, password : string) => {
     
+
+
     const identifiers = identifier.split('.')
     if(identifiers.length !== 2) return null
 

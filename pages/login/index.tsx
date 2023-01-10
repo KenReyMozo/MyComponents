@@ -1,3 +1,6 @@
+import { faEye } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { getCookie, setCookie, setCookies } from "cookies-next";
 import { signIn, useSession } from "next-auth/react";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
@@ -13,8 +16,71 @@ const Login = () => {
     const session = useSession();
 	const router = useRouter()
 
+	type LoginType = {
+		uname : string,
+		pass : string,
+	}
+	type LoginType2 = {
+		email : string,
+		key : string,
+	}
+		
+	function isLog(log : unknown) : log is LoginType{
+		return (log as LoginType) !== undefined
+	}
+
+	function isLog2(log : unknown) : log is LoginType2{
+		return (log as LoginType2) !== undefined
+	}
+
+	type RGB = readonly [red: number, green: number, blue: number];
+	type Color = RGB | string;
+
+
+	const Test2 = () => {
+		let log : unknown;
+
+		log = {
+			uname : "ken",
+			
+		}
+
+		const testing = {
+			uname : "d",
+			pass : "d",}
+		// } satisfies LoginType
+
+		if(isLog(log)){
+			console.log("SADGE1: ",log.uname) 
+		}
+
+		if(isLog2(log)){
+			console.log("SADGE2: ",log.key) 
+		}
+		
+	}
+
 	const HandleLoginSubmit = async (e : React.FormEvent) => {
+		
 		e.preventDefault()
+		// const temp = getCookie("AAAAAA")
+		// console.log("BBBB",temp)
+		// let none : any= null
+		
+		// if(temp !== undefined && temp !== null)
+		// 	none = JSON.parse(temp.toString())
+
+		// console.log("CCCC",none.test2)
+		// const Test = {
+		// 	test1 : "asd",
+		// 	test2 : "zxc",
+		// 	test3 : "qwe",
+		// }
+		// setCookie('AAAAAA',JSON.stringify(Test) );
+
+		Test2()
+
+		return
 		// const res = await signIn('credentials',{
 		// 		username : loginData.email,
 		// 		password : loginData.password,
@@ -60,7 +126,8 @@ const Login = () => {
 
     return <>
         <Modal
-            header={[<KRMLogo2 key={"krm_login_logo"}/>]}
+            // header={[<KRMLogo2 key={"krm_login_logo"}/>]}
+            // header={[<FontAwesomeIcon icon={faEye} />]}
             show={true} name={''} background={"#2d3436"}>
                 <Form onSubmit={HandleLoginSubmit}>
 					<FormInput name={'email'} m='0 0 1em 0'

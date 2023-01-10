@@ -8,6 +8,7 @@ import Flex from "../../components/Flex/Flex";
 import { Is768 } from "../../components/MediaQuery/mediaQuery";
 import ErrorPage from "../../components/Page/ErrorPage";
 import Table, { TableInfo } from "../../components/Table/Table";
+import { testInstance } from "../../utils/baseApi";
 
 // export const BASE_URL = 'http://localhost:1337/';
 export const BASE_URL = "https://lms-backend.sandboxprosolutions.com";
